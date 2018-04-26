@@ -5,9 +5,11 @@
             <router-link :to="post.path">{{post.title}}</router-link>
         </h3>
         <div class="post-card-tags">
-            <router-link :to="`/tags/${tag}`"
+            <!-- <router-link :to="`/tags/${tag}`"
                          v-for="tag in post.frontmatter.tags"
-                         :key="tag">{{tag}}</router-link>
+                         :key="tag">{{tag}}</router-link> -->
+            <span v-for="tag in post.frontmatter.tags"
+                  :key="tag">{{tag}}</span>
         </div>
     </article>
 </template>
@@ -34,8 +36,11 @@ export default {
     box-shadow: 0 1px 2px rgba(151, 151, 151, 0.58);
     &-tags {
         margin-top: 8px;
-        a {
+        span {
+            display: inline-block;
             margin-right: 8px;
+            padding: 4px 16px;
+            background: #eee;
         }
     }
 }

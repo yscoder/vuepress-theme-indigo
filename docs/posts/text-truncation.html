@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>VuePress</title>
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="/vuepress-theme-indigo/favicon.ico">
+  <link rel="manifest" href="/vuepress-theme-indigo/manifest.json">
+  <meta name="theme-color" content="#3F51B5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="msapplication-TileColor" content="#3F51B5">
+    
+    <link rel="preload" href="/vuepress-theme-indigo/assets/css/8.styles.0bdb7375.css" as="style"><link rel="preload" href="/vuepress-theme-indigo/assets/js/app.2ed03f45.js" as="script"><link rel="preload" href="/vuepress-theme-indigo/assets/js/4.6320d2ae.js" as="script"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/0.cf02b090.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/1.4336c8e4.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/2.11c5864c.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/3.aba12e2e.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/5.3c8cef81.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/6.97c384e4.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/7.cb4fed8b.js">
+    <link rel="stylesheet" href="/vuepress-theme-indigo/assets/css/8.styles.0bdb7375.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="layout"><aside class="aside"><div class="aside-inner"><div class="aside-brand-wrap"><div class="aside-brand"><a href="/" class="aside-avatar"><img src="/vuepress-theme-indigo/face.jpg" alt="avatar"></a><hgroup class="aside-introduce"><h5 class="aside-nickname">王昱森</h5><a href="mailto:634206017@qq.com" title="634206017@qq.com" class="aside-mail">634206017@qq.com</a></hgroup></div></div><nav class="aside-nav"><ul><li><a href="/vuepress-theme-indigo/" class="router-link-active"><i class="icon icon-lg icon-home"></i>Home
+                    </a><!----></li><li><a href="/vuepress-theme-indigo/tags"><i class="icon icon-lg icon-tags"></i>Tags
+                    </a><!----></li><li><!----><a href="https://github.com/yscoder" target="_blank" rel="noopener noreferrer"><i class="icon icon-lg icon-github"></i>Github
+                    </a></li><li><!----><a href="https://www.weibo.com/ysweb" target="_blank" rel="noopener noreferrer"><i class="icon icon-lg icon-weibo"></i>Weibo
+                    </a></li></ul></nav></div></aside><div class="layout-container"><header class="header"><div class="header-container container"><h1 class="header-title">前端文字的截断处理</h1><h5 class="header-subtitle"></h5></div></header><div class="container post-main"><article class="post-content"><div class="post-date">2015-09-06T17:37:32.000Z</div><div class="content custom"><p>关于前端页面的文字溢出截断的招数已经很常见了。
+通常的实现有，前端css控制、后端字数输出控制或者前端js字数处理等。</p><h2 id="单行文字"><a href="#单行文字" aria-hidden="true" class="header-anchor">#</a> 单行文字</h2><p>单行文字的溢出处理很简单，我通常是使用css来控制，在文字末尾加上<code>...</code>。</p><pre class="language-css"><code><span class="token selector">.ellipsis</span> <span class="token punctuation">{</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">text-overflow</span><span class="token punctuation">:</span> ellipsis<span class="token punctuation">;</span>
+  <span class="token property">white-space</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><p>给需要文字截断的节点增加一个这样的基础类，然后设置该节点的宽。
+同时注意给未来可能会出现溢出的节点也加上此类，再设置最大宽度<code>max-width</code>，因为很多奇葩用户的输入是你无法掌控的。 - -！</p><h2 id="多行文字"><a href="#多行文字" aria-hidden="true" class="header-anchor">#</a> 多行文字</h2><p>我希望在一个的固定高度的容器中，内容超出后，最后一个文字显示<code>...</code>。</p><p>如法炮制给多行文字的容器添加<code>ellipsis</code>类后，你会发现的确是显示<code>...</code>，不过此时文字是一行的。
+因为在该类中添加了属性<code>white-space</code>，用来定义一个段落如何换行。属性值<code>nowrap</code>：禁止文本换行，除非遇到<code>&lt;br&gt;</code>。</p><p>一番思考后，确定了一个方案。</p><ol><li>给固定高度的容器添加<code>overflow: hidden</code>；</li><li>给容器添加相对定位；</li><li>添加伪元素样式，<code>content:'...'</code>，绝对定位，然后位置定位在容器末尾。</li></ol><p>伪元素的兼容性为IE8，如果需要兼容IE7的可以使用标签代替。</p><h2 id="带显示全部的多行文字"><a href="#带显示全部的多行文字" aria-hidden="true" class="header-anchor">#</a> 带显示全部的多行文字</h2><p>类似 QQ 空间、微信、微博那种。</p><p>{% jsfiddle imys/wymxhaek/3 html,css,result %}</p><p>使用 2 个伪元素加 1 个 a 链接实现。
+精妙之处在于使用伪元素遮挡一行文字，让 a 链接位于伪元素之上显示。</p></div><ul class="post-tags"><li>Html</li><li>CSS</li><li>Ellipsis</li></ul></article></div><footer class="footer"><div class="footer-top"><p>博客内容遵循
+            <a rel="license noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></p></div><div class="footer-bottom"><p><span>王昱森 © 2015 - 2018</span><span><!---->
+                Power by
+                <a href="https://vuepress.vuejs.org" target="_blank" rel="noopener noreferrer">VuePress</a> Theme
+                <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="noopener noreferrer">indigo</a></span></p></div></footer></div></div></div>
+    <script src="/vuepress-theme-indigo/assets/js/4.6320d2ae.js" defer></script><script src="/vuepress-theme-indigo/assets/js/app.2ed03f45.js" defer></script>
+  </body>
+</html>

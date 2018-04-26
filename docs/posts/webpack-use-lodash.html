@@ -12,19 +12,84 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="msapplication-TileColor" content="#3F51B5">
     
-    <link rel="preload" href="/vuepress-theme-indigo/assets/css/9.styles.86991309.css" as="style"><link rel="preload" href="/vuepress-theme-indigo/assets/js/app.87722e4b.js" as="script"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/5.db723e6d.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/1.ff4098a0.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/2.c325d08e.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/3.2ed698fa.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/4.4d7fbf7d.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/0.d5611f69.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/6.41336cc8.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/7.b92c02b7.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/8.e6972b88.js">
-    <link rel="stylesheet" href="/vuepress-theme-indigo/assets/css/9.styles.86991309.css">
+    <link rel="preload" href="/vuepress-theme-indigo/assets/css/8.styles.0bdb7375.css" as="style"><link rel="preload" href="/vuepress-theme-indigo/assets/js/app.2ed03f45.js" as="script"><link rel="preload" href="/vuepress-theme-indigo/assets/js/2.11c5864c.js" as="script"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/0.cf02b090.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/1.4336c8e4.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/3.aba12e2e.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/4.6320d2ae.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/5.3c8cef81.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/6.97c384e4.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/7.cb4fed8b.js">
+    <link rel="stylesheet" href="/vuepress-theme-indigo/assets/css/8.styles.0bdb7375.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="layout"><aside class="aside"><div class="aside-inner"><div class="aside-brand-wrap"><div class="aside-brand"><a href="/" class="aside-avatar"><img src="/vuepress-theme-indigo/face.jpg" alt="avatar"></a><hgroup class="aside-introduce"><h5 class="aside-nickname">王昱森</h5><a href="mailto:634206017@qq.com" title="634206017@qq.com" class="aside-mail">634206017@qq.com</a></hgroup></div></div><nav class="aside-nav"><ul><li><a href="/vuepress-theme-indigo/" class="router-link-active"><i class="icon icon-lg icon-home"></i>Home
                     </a><!----></li><li><a href="/vuepress-theme-indigo/tags"><i class="icon icon-lg icon-tags"></i>Tags
                     </a><!----></li><li><!----><a href="https://github.com/yscoder" target="_blank" rel="noopener noreferrer"><i class="icon icon-lg icon-github"></i>Github
                     </a></li><li><!----><a href="https://www.weibo.com/ysweb" target="_blank" rel="noopener noreferrer"><i class="icon icon-lg icon-weibo"></i>Weibo
-                    </a></li></ul></nav></div></aside><div class="layout-container"><header class="header"><div class="header-container container"><h1 class="header-title">Webpack按需打包Lodash的几种方式</h1><h5 class="header-subtitle"></h5></div></header><!----><footer class="footer"><div class="footer-top"><p>博客内容遵循
+                    </a></li></ul></nav></div></aside><div class="layout-container"><header class="header"><div class="header-container container"><h1 class="header-title">Webpack按需打包Lodash的几种方式</h1><h5 class="header-subtitle"></h5></div></header><div class="container post-main"><article class="post-content"><div class="post-date">2016-12-17T01:41:21.000Z</div><div class="content custom"><p>在数据操作时，Lodash 就是我的弹药库，不管遇到多复杂的数据结构都能用一些函数轻松拆解。</p><p>ES6 中也新增了诸多新的对象函数，一些简单的项目中 ES6 就足够使用了，但还是会有例外的情况引用了少数的 Lodash 函数。一个完整的 Lodash 库，即使是压缩后，现最新版本也有 <code>71k</code> 的体积。不能为了吃一口饭而买下一个饭店啊。</p><p>针对这个问题，其实已经有很多可选方案了。
+</p><h2 id="函数模块"><a href="#函数模块" aria-hidden="true" class="header-anchor">#</a> 函数模块</h2><p>Lodash 中的每个函数在 NPM 都有一个单独的发布模块。<a href="https://www.npmjs.com/search?q=lodash" target="_blank" rel="noopener noreferrer">NPM: results for ‘lodash’</a>
+假如你只需要使用<code>_.isEqual</code>，那么你只需要安装<code>lodash.isequal</code>模块，然后按以下方式引用。</p><pre class="language-js"><code><span class="token keyword">var</span> isEqual <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'lodash.isequal'</span><span class="token punctuation">)</span>
+<span class="token comment">// or ES6</span>
+<span class="token keyword">import</span> isEqual <span class="token keyword">from</span> <span class="token string">'lodash.isequal'</span>
+
+
+<span class="token function">isEqual</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// true</span>
+</code></pre><h2 id="全路径引用"><a href="#全路径引用" aria-hidden="true" class="header-anchor">#</a> 全路径引用</h2><p>在你完整安装 Lodash 后，可以按<code>lodash/函数名</code>的格式单独引入需要的函数模块。</p><pre class="language-js"><code><span class="token keyword">var</span> difference <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'lodash/difference'</span><span class="token punctuation">)</span>
+<span class="token comment">// or ES6</span>
+<span class="token keyword">import</span> difference <span class="token keyword">from</span> <span class="token string">'lodash/difference'</span>
+
+<span class="token function">difference</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment">// [2]</span>
+</code></pre><h2 id="使用插件优化"><a href="#使用插件优化" aria-hidden="true" class="header-anchor">#</a> 使用插件优化</h2><p>在简单场景下，以上两种方式足以解决问题。
+而遇到复杂的数据对象时，我们不得不在一个文件中引入多个 Lodash 函数，这样就需要在文件中写多个<code>require</code>或<code>import</code>相关函数。</p><pre class="language-js"><code><span class="token keyword">import</span> remove <span class="token keyword">from</span> <span class="token string">'lodash/remove'</span>
+<span class="token keyword">import</span> uniq <span class="token keyword">from</span> <span class="token string">'lodash/uniq'</span>
+<span class="token keyword">import</span> invokeMap <span class="token keyword">from</span> <span class="token string">'lodash/invokeMap'</span>
+<span class="token keyword">import</span> sortBy <span class="token keyword">from</span> <span class="token string">'lodash/sortBy'</span>
+<span class="token comment">// more...</span>
+</code></pre><p>正写到关键处却因为引入一个函数要拉到文件头部去定义引用而打乱了思路，很不爽！</p><p>于是我机智的到 Github 去搜索了<code>webpack</code>和<code>lodash</code>两个关键词的组合，排在首位的 <a href="https://github.com/lodash/lodash-webpack-plugin" target="_blank" rel="noopener noreferrer">lodash-webpack-plugin</a> 就是为了解决这个问题而生。</p><p>使用时需要以下模块，其实除了前两个剩下的一般都已安装了：</p><pre class="language-bash"><code>$ <span class="token function">npm</span> i -S lodash-webpack-plugin babel-plugin-lodash babel-core babel-loader babel-preset-es2015 webpack
+</code></pre><p><strong>配置：</strong></p><pre class="language-js"><code><span class="token keyword">var</span> LodashModuleReplacementPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'lodash-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      loader<span class="token punctuation">:</span> <span class="token string">'babel'</span><span class="token punctuation">,</span>
+      test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
+      exclude<span class="token punctuation">:</span> <span class="token regex">/node_modules/</span><span class="token punctuation">,</span>
+      query<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'transform-runtime'</span><span class="token punctuation">,</span> <span class="token string">'lodash'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        presets<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'es2015'</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">LodashModuleReplacementPlugin</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>OccurrenceOrderPlugin</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>UglifyJsPlugin</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre><p>其中<code>babel-plugin-lodash</code>的配置，也就是<code>plugins: ['lodash']</code>，并不是一定要在<code>loaders</code>中，也可以单独定义<code>babel</code>。</p><pre class="language-js"><code><span class="token keyword">var</span> LodashModuleReplacementPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'lodash-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      loader<span class="token punctuation">:</span> <span class="token string">'babel'</span><span class="token punctuation">,</span>
+      test<span class="token punctuation">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span>
+      exclude<span class="token punctuation">:</span> <span class="token regex">/node_modules/</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  babel<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    presets<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'es2015'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'transform-runtime'</span><span class="token punctuation">,</span> <span class="token string">'lodash'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">LodashModuleReplacementPlugin</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>OccurrenceOrderPlugin</span><span class="token punctuation">,</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>UglifyJsPlugin</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre><p>又或者是<code>.babelrc</code>文件中。</p><p>以上工作完成了，在每个你需要使用 lodash 函数的文件中只需要引用一次 lodash，即可调用任意函数而不会造成完全打包。</p><pre class="language-js"><code><span class="token keyword">import</span> _ <span class="token keyword">from</span> <span class="token string">'lodash'</span>
+
+_<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>  <span class="token comment">// 打包时只会引入这一个函数模块</span>
+</code></pre><blockquote><p>注意：必须要使用 ES2015 的模块引用方式才有效。</p></blockquote><h2 id="end"><a href="#end" aria-hidden="true" class="header-anchor">#</a> End</h2><p>以上即是我目前所知道的几种方式，如果哪位朋友有更好的方式（比如只需要全局引入一次），请一定分享与我！😋</p></div><ul class="post-tags"><li>Webpack</li><li>Lodash</li></ul></article></div><footer class="footer"><div class="footer-top"><p>博客内容遵循
             <a rel="license noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></p></div><div class="footer-bottom"><p><span>王昱森 © 2015 - 2018</span><span><!---->
                 Power by
                 <a href="https://vuepress.vuejs.org" target="_blank" rel="noopener noreferrer">VuePress</a> Theme
                 <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="noopener noreferrer">indigo</a></span></p></div></footer></div></div></div>
-    <script src="/vuepress-theme-indigo/assets/js/app.87722e4b.js" defer></script>
+    <script src="/vuepress-theme-indigo/assets/js/2.11c5864c.js" defer></script><script src="/vuepress-theme-indigo/assets/js/app.2ed03f45.js" defer></script>
   </body>
 </html>

@@ -1,22 +1,42 @@
 <template>
     <article class="post-card">
-        <div class="post-card-time"></div>
+        <div class="post-card-time">{{post.frontmatter.date}}</div>
         <h3 class="post-card-title">
-            <a href=""></a>
+            <router-link :to="post.path">{{post.title}}</router-link>
         </h3>
-        <div class="post-card-content"></div>
         <div class="post-card-tags">
-
+            <router-link :to="`/tags/${tag}`"
+                         v-for="tag in post.frontmatter.tags"
+                         :key="tag">{{tag}}</router-link>
         </div>
     </article>
 </template>
 <script>
 export default {
     props: {
-        post: Object
+        slug: {
+            type: String,
+            required: true
+        }
+    },
+    computed: {
+        post() {
+            return this.$blog.posts[this.slug]
+        }
     }
 }
 </script>
 <style lang="less">
-
+.post-card {
+    padding: 30px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(151, 151, 151, 0.58);
+    &-tags {
+        margin-top: 8px;
+        a {
+            margin-right: 8px;
+        }
+    }
+}
 </style>

@@ -20,13 +20,23 @@ export default ({ Vue, options, router, siteData }) => {
     }
   })
 
+  const tags = {}
+  const tagList = []
+  postList.forEach(slug => {
+    const list = posts[slug].frontmatter.tags || []
+    list.forEach(tagName => {
+      if (!tags[tagName]) {
+        tags[tagName] = []
+        tagList.push(tagName)
+      }
+      tags[tagName] = tags[tagName].concat(slug)
+    })
+  })
+
   Vue.mixin({
-    data() {
-      return {
-        $blog: {
-          postList,
-          posts
-        }
+    computed: {
+      $blog() {
+        return { postList, posts, tags, tagList }
       }
     }
   })

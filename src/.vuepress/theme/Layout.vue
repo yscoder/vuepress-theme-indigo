@@ -28,7 +28,7 @@ export default {
     },
     computed: {
         layout() {
-            return this.$page.frontmatter.layout
+            return this.$page.frontmatter.layout || 'post'
         }
     }
 }

@@ -1,4 +1,5 @@
 import config from './config'
+import i18n from './i18n'
 
 const Layout = () => import('./theme/Layout')
 const themeConfig = config.themeConfig
@@ -40,6 +41,11 @@ export default ({ Vue, options, router, siteData }) => {
       }
     }
   })
+
+  // $t('hello') -> '你好'
+  Vue.prototype.$tt = function(field) {
+    return i18n[this.$lang][field]
+  }
 
   router.addRoutes([
     {

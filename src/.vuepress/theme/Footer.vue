@@ -1,10 +1,7 @@
 <template>
     <footer class="footer">
         <div class="footer-top">
-            <p>博客内容遵循
-                <a rel="license noopener noreferrer"
-                   href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"
-                   target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a>
+            <p v-html="$tt('license')">
             </p>
         </div>
         <div class="footer-bottom">
@@ -22,7 +19,7 @@
                     <a href="https://vuepress.vuejs.org"
                        target="_blank"
                        rel="noopener noreferrer">VuePress</a> Theme
-                    <a href="https://github.com/yscoder/hexo-theme-indigo"
+                    <a href="https://github.com/yscoder/vuepress-theme-indigo"
                        target="_blank"
                        rel="noopener noreferrer">indigo</a>
                 </span>

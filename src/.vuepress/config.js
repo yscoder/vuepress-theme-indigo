@@ -25,6 +25,7 @@ module.exports = {
   },
   themeConfig: {
     postDir: '/posts',
+    subTitle: '学习弯道超车的技巧！',
     author: '王昱森',
     email: '634206017@qq.com',
     since: 2015,

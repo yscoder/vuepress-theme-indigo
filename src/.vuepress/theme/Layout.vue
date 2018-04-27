@@ -34,9 +34,16 @@ export default {
             return this.$page.frontmatter.layout || 'post'
         }
     },
+    methods: {
+        createTitle() {
+            const title = `${this.$siteTitle} · ${this.$site.themeConfig.subTitle}`
+            const pageTitle = this.$page.title
+            return (pageTitle ? `${pageTitle} · ` : '') + title
+        }
+    },
     created() {
         if (this.$ssrContext) {
-            this.$ssrContext.title = this.$title
+            this.$ssrContext.title = this.createTitle()
             this.$ssrContext.lang = this.$lang
             this.$ssrContext.description = this.$page.description || this.$description
         }
@@ -45,7 +52,7 @@ export default {
         // update title / meta tags
         this.currentMetaTags = []
         const updateMeta = () => {
-            document.title = this.$title
+            document.title = this.createTitle()
             document.documentElement.lang = this.$lang
             const meta = [
                 {

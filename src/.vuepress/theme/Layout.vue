@@ -17,7 +17,7 @@ import Footer from './Footer'
 import Home from './Home'
 import Tags from './Tags'
 import Post from './Post'
-import { pathToComponentName, updateMetaTags } from './utils'
+import { pathToComponentName, updateMetaTags } from './libs/utils'
 
 export default {
     name: 'layout',

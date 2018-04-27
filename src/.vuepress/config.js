@@ -24,6 +24,7 @@ module.exports = {
     }
   },
   themeConfig: {
+    lang: 'zh-CN',
     postDir: '/posts',
     subTitle: '学习弯道超车的技巧！',
     author: '王昱森',

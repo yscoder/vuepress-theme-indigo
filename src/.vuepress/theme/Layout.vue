@@ -88,4 +88,6 @@ export default {
     }
 }
 </style>
+<style src="prismjs/themes/prism-tomorrow.css"></style>
 <style src="./styles/theme.less" lang="less"></style>
+

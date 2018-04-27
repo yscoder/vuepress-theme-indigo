@@ -73,7 +73,7 @@ export default {
         background: fade(@primaryColor, 50%);
     }
     &-brand-wrap {
-        background: url(../public/brand.jpg);
+        background: url(./imgs/brand.jpg);
         background-size: 100%;
     }
 

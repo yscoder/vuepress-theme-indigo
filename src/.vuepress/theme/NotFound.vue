@@ -1,9 +1,11 @@
 <template>
-    <div>404...</div>
+    <div>
+        <h1>404</h1>
+    </div>
 </template>
 <script>
 export default {
-    name: ''
+    name: 'NotFound'
 }
 </script>
 <style lang="less">

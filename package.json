@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/yscoder/vuepress-theme-indigo.git"
   },
-  "keywords": ["documentation", "vue", "generator"],
+  "keywords": ["vuepress-theme", "vuepress", "blog-theme"],
   "author": "yusen",
   "license": "MIT",
   "bugs": {

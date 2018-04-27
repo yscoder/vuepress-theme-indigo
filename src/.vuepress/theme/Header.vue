@@ -1,14 +1,16 @@
 <template>
     <header class="header">
         <div class="header-container container">
-            <h1 class="header-title">{{$page.frontmatter.title}}</h1>
-            <h5 class="header-subtitle">{{$page.frontmatter.subTitle}}</h5>
+            <h1 class="header-title">{{$page.title || $siteTitle}}</h1>
+            <h5 class="header-subtitle" v-if="layout === 'Home'">{{$site.themeConfig.subTitle}}</h5>
         </div>
     </header>
 </template>
 <script>
 export default {
-    name: ''
+    props: {
+        layout: String
+    }
 }
 </script>
 <style lang="less">

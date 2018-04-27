@@ -2,7 +2,7 @@
     <div class="layout">
         <SideNav></SideNav>
         <div class="layout-container">
-            <Header></Header>
+            <Header :layout="layout"></Header>
             <component :is="layout"></component>
             <Footer></Footer>
         </div>

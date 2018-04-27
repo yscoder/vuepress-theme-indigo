@@ -32,7 +32,6 @@ module.exports = {
     since: 2015,
     avatar: '/face.jpg',
     avatarLink: '/',
-    asideBrand: '/brand.jpg',
     menus: [
       {
         text: 'Home',

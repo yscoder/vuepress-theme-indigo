@@ -13,10 +13,6 @@ export default ({ Vue, options, router, siteData }) => {
             component: Layout
         },
         {
-            path: '/tags',
-            component: Layout
-        },
-        {
             path: '/tags/:tagName',
             component: Layout
         }

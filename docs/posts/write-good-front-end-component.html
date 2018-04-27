@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Yusen&#39;s Blog | 编写良好的前端组件</title>
+    <title>编写良好的前端组件 · Yusen&#39;s Blog · 学习弯道超车的技巧！</title>
     <meta name="description" content="编写良好的前端组件">
     <link rel="shortcut icon" href="/vuepress-theme-indigo/favicon.ico">
   <link rel="manifest" href="/vuepress-theme-indigo/manifest.json">
@@ -12,15 +12,15 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="msapplication-TileColor" content="#3F51B5">
     
-    <link rel="preload" href="/vuepress-theme-indigo/assets/css/8.styles.b90bd0ea.css" as="style"><link rel="preload" href="/vuepress-theme-indigo/assets/js/app.534f1149.js" as="script"><link rel="preload" href="/vuepress-theme-indigo/assets/js/1.15ef5707.js" as="script"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/0.e844ef25.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/2.5eb434c3.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/3.3780d7e5.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/4.4628f922.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/5.33f58b32.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/6.8645a6ac.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/7.92a6b3da.js">
-    <link rel="stylesheet" href="/vuepress-theme-indigo/assets/css/8.styles.b90bd0ea.css">
+    <link rel="preload" href="/vuepress-theme-indigo/assets/css/7.styles.a6f0ba3d.css" as="style"><link rel="preload" href="/vuepress-theme-indigo/assets/js/app.db11ad3c.js" as="script"><link rel="preload" href="/vuepress-theme-indigo/assets/js/1.e14feefe.js" as="script"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/0.1e646029.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/2.dc733e03.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/3.67fffaa8.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/4.6f875459.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/5.7396f4af.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/6.95b42c69.js">
+    <link rel="stylesheet" href="/vuepress-theme-indigo/assets/css/7.styles.a6f0ba3d.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="layout"><aside class="aside"><div class="aside-inner"><div class="aside-brand-wrap"><div class="aside-brand"><a href="/" class="aside-avatar"><img src="/vuepress-theme-indigo/face.jpg" alt="avatar"></a><hgroup class="aside-introduce"><h5 class="aside-nickname">王昱森</h5><a href="mailto:634206017@qq.com" title="634206017@qq.com" class="aside-mail">634206017@qq.com</a></hgroup></div></div><nav class="aside-nav"><ul><li><a href="/vuepress-theme-indigo/" class="router-link-active"><i class="icon icon-lg icon-home"></i>Home
                     </a><!----></li><li><a href="/vuepress-theme-indigo/tags"><i class="icon icon-lg icon-tags"></i>Tags
                     </a><!----></li><li><!----><a href="https://github.com/yscoder" target="_blank" rel="noopener noreferrer"><i class="icon icon-lg icon-github"></i>Github
                     </a></li><li><!----><a href="https://www.weibo.com/ysweb" target="_blank" rel="noopener noreferrer"><i class="icon icon-lg icon-weibo"></i>Weibo
-                    </a></li></ul></nav></div></aside><div class="layout-container"><header class="header"><div class="header-container container"><h1 class="header-title">编写良好的前端组件</h1><h5 class="header-subtitle"></h5></div></header><div class="container post-main"><article class="post-content"><div class="post-date">2017-03-17T10:22:38.000Z</div><div class="content custom"><p>Vue 和 React 的大红大火，带来的是组件化和数据驱动的开发方式。Demo 很美好，但如果没有一定的实际开发经验积累，总是能把一个功能模块写成浆糊。
+                    </a></li></ul></nav></div></aside><div class="layout-container"><header class="header"><div class="header-container container"><h1 class="header-title">编写良好的前端组件</h1><!----></div></header><div class="container post-main"><article class="post-content"><div class="post-date">2017-03-17T10:22:38.000Z</div><div class="content custom"><p>Vue 和 React 的大红大火，带来的是组件化和数据驱动的开发方式。Demo 很美好，但如果没有一定的实际开发经验积累，总是能把一个功能模块写成浆糊。
 依托于 Webpack 等构建工具，使得前端代码具备了后端编程语言的代码组织能力，摆脱了传统的「一泻而下」式的代码编写。至此，作为前端也该对自己的代码有更高的要求。
 </p><h2 id="组件职责划分"><a href="#组件职责划分" aria-hidden="true" class="header-anchor">#</a> 组件职责划分</h2><blockquote><p>一个组件只做一件事，基于功能做好职责划分。</p></blockquote><h3 id="无状态组件"><a href="#无状态组件" aria-hidden="true" class="header-anchor">#</a> 无状态组件</h3><p>公司用的是 Vue，最近又接触了下 React。
 对比来说，React 由于 jsx 式（js和html混合）的写法，加上构建工具的模块化管理，一个文件中可以有多个组件。还支持纯函数式的<strong>无状态组件</strong>，只是单纯的接受数据渲染 DOM，没有生命周期等额外的概念。</p><p><img src="http://static.imys.net/no-status-component.jpg" alt="无状态组件"></p><pre class="language-js"><code><span class="token comment">// 无状态组件</span>
@@ -52,11 +52,10 @@
 
 <span class="token comment">&lt;!-- bad --&gt;</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>my-component</span> <span class="token attr-name">:config</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>myConfig<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>my-component</span><span class="token punctuation">&gt;</span></span>
-</code></pre><h3 id="良好的接口设计"><a href="#良好的接口设计" aria-hidden="true" class="header-anchor">#</a> 良好的接口设计</h3><ol><li>把组件内部可以完成的工作做到极致。虽然提倡拥抱变化，但接口不是越多越好。</li><li>如果常量变为 props 能应对更多的场景，那么就可以作为 props。原有的常量可作为默认值。</li><li>如果组件不能提供调用者所需求的功能，那么这个组件的接口还不够完善。</li><li>如果需要为了某一调用者编写大量特定需求的代码，那么可以考虑通过扩展等方式构建一个新的组件。</li><li>保证组件的属性和事件足够的给大多数的组件使用。</li></ol><h2 id="end"><a href="#end" aria-hidden="true" class="header-anchor">#</a> End</h2><p>设计模式六大原则在组件设计中也有适用的地方。</p></div><ul class="post-tags"><li>前端</li><li>组件</li><li>Vue</li><li>React</li></ul></article></div><footer class="footer"><div class="footer-top"><p>博客内容遵循
-            <a rel="license noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></p></div><div class="footer-bottom"><p><span>王昱森 © 2015 - 2018</span><span><!---->
+</code></pre><h3 id="良好的接口设计"><a href="#良好的接口设计" aria-hidden="true" class="header-anchor">#</a> 良好的接口设计</h3><ol><li>把组件内部可以完成的工作做到极致。虽然提倡拥抱变化，但接口不是越多越好。</li><li>如果常量变为 props 能应对更多的场景，那么就可以作为 props。原有的常量可作为默认值。</li><li>如果组件不能提供调用者所需求的功能，那么这个组件的接口还不够完善。</li><li>如果需要为了某一调用者编写大量特定需求的代码，那么可以考虑通过扩展等方式构建一个新的组件。</li><li>保证组件的属性和事件足够的给大多数的组件使用。</li></ol><h2 id="end"><a href="#end" aria-hidden="true" class="header-anchor">#</a> End</h2><p>设计模式六大原则在组件设计中也有适用的地方。</p></div><ul class="post-tags"><li>前端</li><li>组件</li><li>Vue</li><li>React</li></ul></article></div><footer class="footer"><div class="footer-top"><p>博客内容遵循 <a rel="license noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></p></div><div class="footer-bottom"><p><span>王昱森 © 2015 - 2018</span><span><!---->
                 Power by
                 <a href="https://vuepress.vuejs.org" target="_blank" rel="noopener noreferrer">VuePress</a> Theme
-                <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="noopener noreferrer">indigo</a></span></p></div></footer></div></div></div>
-    <script src="/vuepress-theme-indigo/assets/js/1.15ef5707.js" defer></script><script src="/vuepress-theme-indigo/assets/js/app.534f1149.js" defer></script>
+                <a href="https://github.com/yscoder/vuepress-theme-indigo" target="_blank" rel="noopener noreferrer">indigo</a></span></p></div></footer></div></div></div>
+    <script src="/vuepress-theme-indigo/assets/js/1.e14feefe.js" defer></script><script src="/vuepress-theme-indigo/assets/js/app.db11ad3c.js" defer></script>
   </body>
 </html>

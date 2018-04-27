@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Yusen&#39;s Blog | Vue最佳实践</title>
+    <title>Vue最佳实践 · Yusen&#39;s Blog · 学习弯道超车的技巧！</title>
     <meta name="description" content="Vue最佳实践">
     <link rel="shortcut icon" href="/vuepress-theme-indigo/favicon.ico">
   <link rel="manifest" href="/vuepress-theme-indigo/manifest.json">
@@ -12,15 +12,15 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="msapplication-TileColor" content="#3F51B5">
     
-    <link rel="preload" href="/vuepress-theme-indigo/assets/css/8.styles.b90bd0ea.css" as="style"><link rel="preload" href="/vuepress-theme-indigo/assets/js/app.534f1149.js" as="script"><link rel="preload" href="/vuepress-theme-indigo/assets/js/3.3780d7e5.js" as="script"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/0.e844ef25.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/1.15ef5707.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/2.5eb434c3.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/4.4628f922.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/5.33f58b32.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/6.8645a6ac.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/7.92a6b3da.js">
-    <link rel="stylesheet" href="/vuepress-theme-indigo/assets/css/8.styles.b90bd0ea.css">
+    <link rel="preload" href="/vuepress-theme-indigo/assets/css/7.styles.a6f0ba3d.css" as="style"><link rel="preload" href="/vuepress-theme-indigo/assets/js/app.db11ad3c.js" as="script"><link rel="preload" href="/vuepress-theme-indigo/assets/js/3.67fffaa8.js" as="script"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/0.1e646029.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/1.e14feefe.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/2.dc733e03.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/4.6f875459.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/5.7396f4af.js"><link rel="prefetch" href="/vuepress-theme-indigo/assets/js/6.95b42c69.js">
+    <link rel="stylesheet" href="/vuepress-theme-indigo/assets/css/7.styles.a6f0ba3d.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="layout"><aside class="aside"><div class="aside-inner"><div class="aside-brand-wrap"><div class="aside-brand"><a href="/" class="aside-avatar"><img src="/vuepress-theme-indigo/face.jpg" alt="avatar"></a><hgroup class="aside-introduce"><h5 class="aside-nickname">王昱森</h5><a href="mailto:634206017@qq.com" title="634206017@qq.com" class="aside-mail">634206017@qq.com</a></hgroup></div></div><nav class="aside-nav"><ul><li><a href="/vuepress-theme-indigo/" class="router-link-active"><i class="icon icon-lg icon-home"></i>Home
                     </a><!----></li><li><a href="/vuepress-theme-indigo/tags"><i class="icon icon-lg icon-tags"></i>Tags
                     </a><!----></li><li><!----><a href="https://github.com/yscoder" target="_blank" rel="noopener noreferrer"><i class="icon icon-lg icon-github"></i>Github
                     </a></li><li><!----><a href="https://www.weibo.com/ysweb" target="_blank" rel="noopener noreferrer"><i class="icon icon-lg icon-weibo"></i>Weibo
-                    </a></li></ul></nav></div></aside><div class="layout-container"><header class="header"><div class="header-container container"><h1 class="header-title">Vue最佳实践</h1><h5 class="header-subtitle"></h5></div></header><div class="container post-main"><article class="post-content"><div class="post-date">2018-03-20T20:18:51.000Z</div><div class="content custom"><blockquote><p>记录我在使用 Vue 中发现的一些好的代码实践，希望能够保持更新。🤠</p></blockquote><h2 id="this-引用"><a href="#this-引用" aria-hidden="true" class="header-anchor">#</a> this 引用</h2><p>在组件作用域内使用箭头函数可以保证 <code>this</code> 永远指向组件本身。</p><pre class="language-js"><code><span class="token comment">// bad</span>
+                    </a></li></ul></nav></div></aside><div class="layout-container"><header class="header"><div class="header-container container"><h1 class="header-title">Vue最佳实践</h1><!----></div></header><div class="container post-main"><article class="post-content"><div class="post-date">2018-03-20T20:18:51.000Z</div><div class="content custom"><blockquote><p>记录我在使用 Vue 中发现的一些好的代码实践，希望能够保持更新。🤠</p></blockquote><h2 id="this-引用"><a href="#this-引用" aria-hidden="true" class="header-anchor">#</a> this 引用</h2><p>在组件作用域内使用箭头函数可以保证 <code>this</code> 永远指向组件本身。</p><pre class="language-js"><code><span class="token comment">// bad</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
     <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token punctuation">{</span>
@@ -380,11 +380,10 @@ Vue<span class="token punctuation">.</span><span class="token function">filter</
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre><p>指令有着完善的生命周期钩子，但在数据管理上偏弱。一般用于单一功能的集成，或者只需要一次初始化的插件。</p><blockquote><p>指令中可通过 <code>el</code> 或 <code>el.dataset</code> 进行生命周期间的数据共享。</p></blockquote></div><ul class="post-tags"><li>Vue</li><li>技巧</li></ul></article></div><footer class="footer"><div class="footer-top"><p>博客内容遵循
-            <a rel="license noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></p></div><div class="footer-bottom"><p><span>王昱森 © 2015 - 2018</span><span><!---->
+</code></pre><p>指令有着完善的生命周期钩子，但在数据管理上偏弱。一般用于单一功能的集成，或者只需要一次初始化的插件。</p><blockquote><p>指令中可通过 <code>el</code> 或 <code>el.dataset</code> 进行生命周期间的数据共享。</p></blockquote></div><ul class="post-tags"><li>Vue</li><li>技巧</li></ul></article></div><footer class="footer"><div class="footer-top"><p>博客内容遵循 <a rel="license noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></p></div><div class="footer-bottom"><p><span>王昱森 © 2015 - 2018</span><span><!---->
                 Power by
                 <a href="https://vuepress.vuejs.org" target="_blank" rel="noopener noreferrer">VuePress</a> Theme
-                <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="noopener noreferrer">indigo</a></span></p></div></footer></div></div></div>
-    <script src="/vuepress-theme-indigo/assets/js/3.3780d7e5.js" defer></script><script src="/vuepress-theme-indigo/assets/js/app.534f1149.js" defer></script>
+                <a href="https://github.com/yscoder/vuepress-theme-indigo" target="_blank" rel="noopener noreferrer">indigo</a></span></p></div></footer></div></div></div>
+    <script src="/vuepress-theme-indigo/assets/js/3.67fffaa8.js" defer></script><script src="/vuepress-theme-indigo/assets/js/app.db11ad3c.js" defer></script>
   </body>
 </html>

@@ -16,6 +16,10 @@
     esutils "^2.0.2"
     js-tokens "^3.0.0"
 
+"@fortawesome/fontawesome-free-webfonts@^1.0.6":
+  version "1.0.6"
+  resolved "http://r.cnpmjs.org/@fortawesome/fontawesome-free-webfonts/download/@fortawesome/fontawesome-free-webfonts-1.0.6.tgz#3dd13aa1a7466bff8fb0a401e1771c011ef2ca14"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"

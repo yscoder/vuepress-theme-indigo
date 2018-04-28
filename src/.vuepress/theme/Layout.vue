@@ -1,12 +1,22 @@
 <template>
-    <div class="layout">
+  <v-app>
+    <v-navigation-drawer app></v-navigation-drawer>
+    <Header :layout="layout"></Header>
+    <v-content>
+      <v-container fluid>
+        <component :is="layout"></component>
+      </v-container>
+      <Footer></Footer>
+    </v-content>
+  </v-app>
+  <!-- <div class="layout">
         <SideNav></SideNav>
         <div class="layout-container">
             <Header :layout="layout"></Header>
-            <component :is="layout"></component>
+
             <Footer></Footer>
         </div>
-    </div>
+    </div> -->
 </template>
 <script>
 import Vue from 'vue'
@@ -20,81 +30,75 @@ import Post from './Post'
 import { pathToComponentName, updateMetaTags } from './libs/utils'
 
 export default {
-    name: 'layout',
-    components: {
-        SideNav,
-        Header,
-        Footer,
-        Home,
-        Tags,
-        Post
-    },
-    computed: {
-        layout() {
-            return this.$page.frontmatter.layout || 'post'
-        }
-    },
-    methods: {
-        createTitle() {
-            const title = `${this.$siteTitle} · ${this.$site.themeConfig.subTitle}`
-            const pageTitle = this.$page.title
-            return (pageTitle ? `${pageTitle} · ` : '') + title
-        }
-    },
-    created() {
-        if (this.$ssrContext) {
-            this.$ssrContext.title = this.createTitle()
-            this.$ssrContext.lang = this.$lang
-            this.$ssrContext.description = this.$page.description || this.$description
-        }
-    },
-    mounted() {
-        // update title / meta tags
-        this.currentMetaTags = []
-        const updateMeta = () => {
-            document.title = this.createTitle()
-            document.documentElement.lang = this.$lang
-            const meta = [
-                {
-                    name: 'description',
-                    content: this.$description
-                },
-                ...(this.$page.frontmatter.meta || [])
-            ]
-            this.currentMetaTags = updateMetaTags(meta, this.currentMetaTags)
-        }
-        this.$watch('$page', updateMeta)
-        updateMeta()
+  name: 'layout',
+  components: {
+    SideNav,
+    Header,
+    Footer,
+    Home,
+    Tags,
+    Post
+  },
+  data() {
+    return {
+      isDark: true
+    }
+  },
+  computed: {
+    layout() {
+      return this.$page.frontmatter.layout || 'post'
+    }
+  },
+  methods: {
+    createTitle() {
+      const title = `${this.$siteTitle} · ${this.$site.themeConfig.subTitle}`
+      const pageTitle = this.$page.title
+      return (pageTitle ? `${pageTitle} · ` : '') + title
+    }
+  },
+  created() {
+    if (this.$ssrContext) {
+      this.$ssrContext.title = this.createTitle()
+      this.$ssrContext.lang = this.$lang
+      this.$ssrContext.description = this.$page.description || this.$description
+    }
+  },
+  mounted() {
+    // update title / meta tags
+    this.currentMetaTags = []
+    const updateMeta = () => {
+      document.title = this.createTitle()
+      document.documentElement.lang = this.$lang
+      const meta = [
+        {
+          name: 'description',
+          content: this.$description
+        },
+        ...(this.$page.frontmatter.meta || [])
+      ]
+      this.currentMetaTags = updateMetaTags(meta, this.currentMetaTags)
+    }
+    this.$watch('$page', updateMeta)
+    updateMeta()
 
-        // configure progress bar
-        nprogress.configure({ showSpinner: false })
+    // configure progress bar
+    nprogress.configure({ showSpinner: false })
 
-        this.$router.beforeEach((to, from, next) => {
-            if (to.path !== from.path && !Vue.component(pathToComponentName(to.path))) {
-                nprogress.start()
-            }
-            next()
-        })
+    this.$router.beforeEach((to, from, next) => {
+      if (to.path !== from.path && !Vue.component(pathToComponentName(to.path))) {
+        nprogress.start()
+      }
+      next()
+    })
 
-        this.$router.afterEach(() => {
-            nprogress.done()
-            this.isSidebarOpen = false
-        })
-    },
-    beforeDestroy() {
-        updateMetaTags(null, this.currentMetaTags)
-    },
+    this.$router.afterEach(() => {
+      nprogress.done()
+      this.isSidebarOpen = false
+    })
+  },
+  beforeDestroy() {
+    updateMetaTags(null, this.currentMetaTags)
+  },
 }
 </script>
-<style lang="less">
-@import './styles/config.less';
-
-.layout {
-    &-container {
-        padding-left: @menuWidth;
-    }
-}
-</style>
-<style src="prismjs/themes/prism-tomorrow.css"></style>
-<style src="./styles/theme.less" lang="less"></style>
 

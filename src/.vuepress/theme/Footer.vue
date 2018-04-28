@@ -1,83 +1,75 @@
 <template>
-    <footer class="footer">
-        <div class="footer-top">
-            <p v-html="$tt('license')">
-            </p>
-        </div>
-        <div class="footer-bottom">
-            <p>
-                <span>{{$site.themeConfig.author}} &copy; {{since}}</span>
-                <span>
-                    <template v-if="$site.themeConfig.icpLicense">
-                        <a href="http://www.miitbeian.gov.cn/"
-                           target="_blank"
-                           rel="noopener noreferrer">
-                            {{$site.themeConfig.icpLicense}}
-                        </a><br>
-                    </template>
-                    Power by
-                    <a href="https://vuepress.vuejs.org"
-                       target="_blank"
-                       rel="noopener noreferrer">VuePress</a> Theme
-                    <a href="https://github.com/yscoder/vuepress-theme-indigo"
-                       target="_blank"
-                       rel="noopener noreferrer">indigo</a>
-                </span>
-            </p>
-        </div>
-    </footer>
+  <v-footer dark
+            class="blog-footer darken-1 mt-4"
+            color="primary"
+            height="auto">
+    <v-card flat
+            tile
+            color="primary"
+            class="primary--text text--lighten-4 text-xs-center">
+      <v-card-text v-html="$tt('license')"
+                   class="pb-0"></v-card-text>
+      <v-card-text class="pt-0 mt-1">
+        <span>{{$site.themeConfig.author}} &copy; {{since}}</span>
+        <span>
+          <template v-if="$site.themeConfig.icpLicense">
+            <a href="http://www.miitbeian.gov.cn/"
+               target="_blank"
+               rel="noopener noreferrer">
+              {{$site.themeConfig.icpLicense}}
+            </a><br>
+          </template>
+          Power by
+          <a href="https://vuepress.vuejs.org"
+             target="_blank"
+             rel="noopener noreferrer">VuePress</a> Theme
+          <a href="https://github.com/yscoder/vuepress-theme-indigo"
+             target="_blank"
+             rel="noopener noreferrer">indigo</a>
+        </span>
+      </v-card-text>
+    </v-card>
+  </v-footer>
 </template>
 <script>
 export default {
-    computed: {
-        since() {
-            const since = this.$site.themeConfig.since
-            const now = new Date().getFullYear()
-            return since < now ? `${since} - ${now}` : since
-        }
+  computed: {
+    since() {
+      const since = this.$site.themeConfig.since
+      const now = new Date().getFullYear()
+      return since < now ? `${since} - ${now}` : since
     }
+  }
 }
 </script>
-<style lang="less">
-@import './styles/config.less';
+<style lang="stylus">
+/* @import './styles/config.less' */
+.blog-footer {
+  font-size: 13px;
 
-.footer {
-    color: rgba(255, 255, 255, 0.6);
-    background: @darkPrimaryColor;
-    p {
-        margin: 0;
-        line-height: 1.6;
-        font-size: 13px;
-        text-align: center;
-        span {
-            &:not(:first-child):before {
-                content: '·';
-                padding: 0 0.5em;
-            }
-        }
-        a {
-            border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
-            &:hover {
-                border-bottom: 1px solid rgba(255, 255, 255, 0.7);
-            }
-        }
+  .card {
+    width: 100%;
+    opacity: 0.9;
+  }
+
+  .card__text {
+    span {
+      &:not(:first-child):before {
+        content: '·';
+        padding: 0 0.5em;
+      }
     }
 
-    &-top {
-        padding: 16px;
-        background: @primaryColor;
-    }
     a {
-        color: inherit;
-        opacity: 0.8;
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
 
-        &:hover {
-            color: #fff;
-            text-decoration: none;
-        }
+      &:hover {
+        color: #fff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+      }
     }
-    &-bottom {
-        padding: 16px;
-    }
+  }
 }
 </style>

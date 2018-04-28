@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/yscoder/vuepress-theme-indigo#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free-webfonts": "^1.0.6",
     "autoprefixer": "^8.2.0",
     "buble": "^0.19.3",
     "buble-loader": "^0.5.0",

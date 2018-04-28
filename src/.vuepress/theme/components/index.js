@@ -1,6 +1,7 @@
-import VApp from 'vuetify/es5/components/VApp'
 import Vuetify from 'vuetify/es5/components/Vuetify'
+import VApp from 'vuetify/es5/components/VApp'
 import VGrid from 'vuetify/es5/components/VGrid'
+import VFooter from 'vuetify/es5/components/VFooter'
 import VToolBar from 'vuetify/es5/components/VToolBar'
 import VNavDrawer from 'vuetify/es5/components/VNavigationDrawer'
 import VTabs from 'vuetify/es5/components/VTabs'
@@ -9,7 +10,7 @@ import VList from 'vuetify/es5/components/VList'
 import VPagination from 'vuetify/es5/components/VPagination'
 import VSubheader from 'vuetify/es5/components/VSubheader'
 import VParallax from 'vuetify/es5/components/VParallax'
-import VButton from 'vuetify/es5/components/VBtn'
+import VBtn from 'vuetify/es5/components/VBtn'
 import VCard from 'vuetify/es5/components/VCard'
 import VAvatar from 'vuetify/es5/components/VAvatar'
 import VChip from 'vuetify/es5/components/VChip'
@@ -22,6 +23,7 @@ const install = (Vue, theme) => {
         components: {
             VApp,
             VGrid,
+            VFooter,
             VToolBar,
             VNavDrawer,
             VTabs,
@@ -30,7 +32,7 @@ const install = (Vue, theme) => {
             VPagination,
             VSubheader,
             VParallax,
-            VButton,
+            VBtn,
             VCard,
             VAvatar,
             VChip,

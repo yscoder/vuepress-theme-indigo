@@ -7,7 +7,7 @@ description: Vue最佳实践
 
 > 记录我在使用 Vue 中发现的一些好的代码实践，希望能够保持更新。🤠
 
-<!--more-->
+<!-- more -->
 
 ## this 引用
 
@@ -16,36 +16,36 @@ description: Vue最佳实践
 ```js
 // bad
 export default {
-    data() {
-        return {
-            msg: 'hello'
-        }
-    },
-    methods: {
-        hello() {
-            setTimeout(function() {
-                console.log(this.msg) // this 指向 window
-            })
-        }
+  data() {
+    return {
+      msg: 'hello'
     }
+  },
+  methods: {
+    hello() {
+      setTimeout(function() {
+        console.log(this.msg) // this 指向 window
+      })
+    }
+  }
 }
 ```
 
 ```js
 // good
 export default {
-    data() {
-        return {
-            msg: 'hello'
-        }
-    },
-    methods: {
-        hello() {
-            setTimeout(() => {
-                console.log(this.msg) // this 指向组件
-            })
-        }
+  data() {
+    return {
+      msg: 'hello'
     }
+  },
+  methods: {
+    hello() {
+      setTimeout(() => {
+        console.log(this.msg) // this 指向组件
+      })
+    }
+  }
 }
 ```
 
@@ -93,38 +93,38 @@ export default {
 
 ```js
 export default {
-    template: `
+  template: `
         <div>
             <input type="radio" v-model="nameVal" value="1">
             <input type="radio" v-model="nameVal" value="2">
         </div>`,
-    data() {
-        return {
-            name: ''
-        }
-    },
-    computed: {
-        nameVal: {
-            get() {
-                return this.name
-            },
-            set(val) {
-                this.edit(val)
-            }
-        }
-    },
-    methods: {
-        edit(name) {
-            this.$http.put('/name', { name }).then(data => {
-                this.name = name
-            })
-        }
-    },
-    created() {
-        this.$http.get('/name').then(data => {
-            this.name = data.name
-        })
+  data() {
+    return {
+      name: ''
     }
+  },
+  computed: {
+    nameVal: {
+      get() {
+        return this.name
+      },
+      set(val) {
+        this.edit(val)
+      }
+    }
+  },
+  methods: {
+    edit(name) {
+      this.$http.put('/name', { name }).then(data => {
+        this.name = name
+      })
+    }
+  },
+  created() {
+    this.$http.get('/name').then(data => {
+      this.name = data.name
+    })
+  }
 }
 ```
 
@@ -137,17 +137,17 @@ import bus from 'event-bus'
 import plugin from 'plugin'
 
 export default {
-    // ...
-    created() {
-        bus.$on('hello', this.hello) // 注册全局事件
-        window.addEventListener('resize', this.onResize) // DOM 事件
-        plugin.init() // 第三方组件初始化
-    },
-    destoryed() {
-        bus.$off('hello', this.hello)
-        window.removeEventListener('resize', this.onResize)
-        plugin.destory()
-    }
+  // ...
+  created() {
+    bus.$on('hello', this.hello) // 注册全局事件
+    window.addEventListener('resize', this.onResize) // DOM 事件
+    plugin.init() // 第三方组件初始化
+  },
+  destoryed() {
+    bus.$off('hello', this.hello)
+    window.removeEventListener('resize', this.onResize)
+    plugin.destory()
+  }
 }
 ```
 
@@ -253,18 +253,18 @@ export default {
 // 按长度截断文字，补...，中文 = 2
 const cnReg = /[\u4e00-\u9fa5]/
 Vue.filter('ellipsis', (str, len = 10) => {
-    let i = 0
-    let j = 0
-    let ret = ''
-    const text = String(str).trim()
-    const max = text.length
-    while (j < max && i < len) {
-        const c = text.charAt(j)
-        ret += c
-        j += 1
-        i = cnReg.test(c) ? i + 2 : i + 1
-    }
-    return ret === text ? text : `${ret}...`
+  let i = 0
+  let j = 0
+  let ret = ''
+  const text = String(str).trim()
+  const max = text.length
+  while (j < max && i < len) {
+    const c = text.charAt(j)
+    ret += c
+    j += 1
+    i = cnReg.test(c) ? i + 2 : i + 1
+  }
+  return ret === text ? text : `${ret}...`
 })
 
 // 日期转相对时间
@@ -279,9 +279,9 @@ Vue.filter('userRole', value => ['创建者', '管理员', '成员'][value])
 
 ## Props
 
-*   布尔属性默认值为 `false` 可以省略
-*   数组最好声明默认值 `[]`，保证数据请求成功前模版里的 `v-for` 不会出错
-*   对象也需要注意是否声明了默认值 `{}`，避免模版中使用 `obj.xx` 报错
+* 布尔属性默认值为 `false` 可以省略
+* 数组最好声明默认值 `[]`，保证数据请求成功前模版里的 `v-for` 不会出错
+* 对象也需要注意是否声明了默认值 `{}`，避免模版中使用 `obj.xx` 报错
 
 ```js
 {
@@ -367,28 +367,28 @@ export default {
 import { Dialog } from 'element-ui'
 
 export default {
-    name: 'ElDialogEx',
-    extends: Dialog,
-    props: {
-        appendToBody: {
-            // 把组件插入 body 下
-            type: Boolean,
-            default: true
-        },
-        center: Boolean // 设置垂直居中
+  name: 'ElDialogEx',
+  extends: Dialog,
+  props: {
+    appendToBody: {
+      // 把组件插入 body 下
+      type: Boolean,
+      default: true
     },
-    computed: {
-        sizeClass() {
-            // 这个 sizeClass 计算属性是组件源码里就有的，这里是利用了类名支持字符串拼接的特性，在这个函数里增加了垂直居中的自定义类拼接
-            return `el-dialog--${this.size}` + this.center ? ' dialog-center ' : ''
-        }
-    },
-    mounted() {
-        if (this.appendToBody) document.body.appendChild(this.$el)
-    },
-    beforeDestroy() {
-        if (this.appendToBody) this.$el.parentNode.remove(this.$el)
+    center: Boolean // 设置垂直居中
+  },
+  computed: {
+    sizeClass() {
+      // 这个 sizeClass 计算属性是组件源码里就有的，这里是利用了类名支持字符串拼接的特性，在这个函数里增加了垂直居中的自定义类拼接
+      return `el-dialog--${this.size}` + this.center ? ' dialog-center ' : ''
     }
+  },
+  mounted() {
+    if (this.appendToBody) document.body.appendChild(this.$el)
+  },
+  beforeDestroy() {
+    if (this.appendToBody) this.$el.parentNode.remove(this.$el)
+  }
 }
 ```
 
@@ -397,19 +397,19 @@ export default {
 ```js
 // appendToBody.js
 export default {
-    props: {
-        appendToBody: {
-            // 把组件插入 body 下
-            type: Boolean,
-            default: true
-        }
-    },
-    mounted() {
-        if (this.appendToBody) document.body.appendChild(this.$el)
-    },
-    beforeDestroy() {
-        if (this.appendToBody) this.$el.parentNode.remove(this.$el)
+  props: {
+    appendToBody: {
+      // 把组件插入 body 下
+      type: Boolean,
+      default: true
     }
+  },
+  mounted() {
+    if (this.appendToBody) document.body.appendChild(this.$el)
+  },
+  beforeDestroy() {
+    if (this.appendToBody) this.$el.parentNode.remove(this.$el)
+  }
 }
 ```
 
@@ -421,18 +421,18 @@ import { Dialog } from 'element-ui'
 import appendToBody from 'mixins/appendToBody'
 
 export default {
-    name: 'ElDialogEx',
-    extends: Dialog,
-    mixins: [appendToBody],
-    props: {
-        center: Boolean // 设置垂直居中
-    },
-    computed: {
-        sizeClass() {
-            // 这个 sizeClass 计算属性是组件源码里就有的，这里是利用了类名支持字符串拼接的特性，在这个函数里增加了垂直居中的自定义类拼接
-            return `el-dialog--${this.size}` + this.center ? ' dialog-center ' : ''
-        }
+  name: 'ElDialogEx',
+  extends: Dialog,
+  mixins: [appendToBody],
+  props: {
+    center: Boolean // 设置垂直居中
+  },
+  computed: {
+    sizeClass() {
+      // 这个 sizeClass 计算属性是组件源码里就有的，这里是利用了类名支持字符串拼接的特性，在这个函数里增加了垂直居中的自定义类拼接
+      return `el-dialog--${this.size}` + this.center ? ' dialog-center ' : ''
     }
+  }
 }
 ```
 
@@ -442,11 +442,11 @@ export default {
 
 任何一个库一般都会提供以下的接口：
 
-*   使用自定义配置初始化
-*   可访问的属性
-*   可调用的功能函数
-*   事件绑定
-*   良好的生命周期钩子
+* 使用自定义配置初始化
+* 可访问的属性
+* 可调用的功能函数
+* 事件绑定
+* 良好的生命周期钩子
 
 > 如果没有足够的编程经验用原生 js 去写一个插件可能最后就是一团乱麻。这也是 Vue 等众多前端框架的作用，它们约束了一个模块的代码模版，提供了事件管理、生命周期运行、属性和函数的定义，使即使经验不足的人也能写出一个看得过去的模块。
 
@@ -456,46 +456,46 @@ export default {
 import Lib from 'lib'
 
 export default {
-    props: {
-        options: Object
-    },
-    data() {
-        return {
-            instance: null
-        }
-    },
-    methods: {
-        doSomething(xxx) {
-            // lib 的操作函数
-            // 外部使用 $refs 调用
-            this.instance.doSomething(xxx)
-        }
-    },
-    computed: {
-        libProp() {
-            // lib 的可访问属性使用计算属性访问
-            // 外部使用 $refs 调用
-            return this.instance.prop
-        }
-    },
-    watch: {
-        options(val) {
-            // 监听配置更新，调用 lib 接口更新配置
-            if (val) this.instance.updateOptions(val)
-        }
-    },
-    mounted() {
-        // mounted 或者 created 对应 lib 实例化并传入自定义配置
-        this.instance = new Lib(this.$el, this.options)
-        // lib 内的事件 $emit 出去，外部监听
-        this.instance.on('update', (...args) => {
-            this.$emit('update', ...args)
-        })
-    },
-    destroyed() {
-        // lib 如果提供了 destroy 等销毁资源的函数一般都会对其内部的 DOM 事件解绑
-        this.instance.destroy()
+  props: {
+    options: Object
+  },
+  data() {
+    return {
+      instance: null
     }
+  },
+  methods: {
+    doSomething(xxx) {
+      // lib 的操作函数
+      // 外部使用 $refs 调用
+      this.instance.doSomething(xxx)
+    }
+  },
+  computed: {
+    libProp() {
+      // lib 的可访问属性使用计算属性访问
+      // 外部使用 $refs 调用
+      return this.instance.prop
+    }
+  },
+  watch: {
+    options(val) {
+      // 监听配置更新，调用 lib 接口更新配置
+      if (val) this.instance.updateOptions(val)
+    }
+  },
+  mounted() {
+    // mounted 或者 created 对应 lib 实例化并传入自定义配置
+    this.instance = new Lib(this.$el, this.options)
+    // lib 内的事件 $emit 出去，外部监听
+    this.instance.on('update', (...args) => {
+      this.$emit('update', ...args)
+    })
+  },
+  destroyed() {
+    // lib 如果提供了 destroy 等销毁资源的函数一般都会对其内部的 DOM 事件解绑
+    this.instance.destroy()
+  }
 }
 ```
 
@@ -505,28 +505,28 @@ export default {
 import Lib from 'lib'
 
 export default {
-    install(Vue, option = {}) {
-        // 存放全局配置
-        const defaults = option
+  install(Vue, option = {}) {
+    // 存放全局配置
+    const defaults = option
 
-        Vue.directive('my-directive', {
-            bind(el, { value }) {
-                // 当前配置混合全局配置
-                const options = Object.assign({}, defaults, value)
-                const lib = new Lib(el, options)
-                el._libInstace = lib // 缓存 lib 实例
-            },
-            update(el, { value }, vnode) {
-                // 更新 lib 配置
-                el._libInstace.setOptions(value)
-            },
-            unbind(el) {
-                // 销毁 lib
-                el._libInstace.destroy()
-                delete el._libInstace
-            }
-        })
-    }
+    Vue.directive('my-directive', {
+      bind(el, { value }) {
+        // 当前配置混合全局配置
+        const options = Object.assign({}, defaults, value)
+        const lib = new Lib(el, options)
+        el._libInstace = lib // 缓存 lib 实例
+      },
+      update(el, { value }, vnode) {
+        // 更新 lib 配置
+        el._libInstace.setOptions(value)
+      },
+      unbind(el) {
+        // 销毁 lib
+        el._libInstace.destroy()
+        delete el._libInstace
+      }
+    })
+  }
 }
 ```
 

@@ -14,35 +14,36 @@ import VBtn from 'vuetify/es5/components/VBtn'
 import VCard from 'vuetify/es5/components/VCard'
 import VAvatar from 'vuetify/es5/components/VAvatar'
 import VChip from 'vuetify/es5/components/VChip'
+import VDivider from 'vuetify/es5/components/VDivider'
 import VSnackbar from 'vuetify/es5/components/VSnackbar'
 import directives from 'vuetify/es5/directives'
 
-
 const install = (Vue, theme) => {
-    Vue.use(Vuetify, {
-        components: {
-            VApp,
-            VGrid,
-            VFooter,
-            VToolBar,
-            VNavDrawer,
-            VTabs,
-            VMenu,
-            VList,
-            VPagination,
-            VSubheader,
-            VParallax,
-            VBtn,
-            VCard,
-            VAvatar,
-            VChip,
-            VSnackbar,
-        },
-        directives,
-        theme: theme.colors,
-        // options: {
-        // }
-    })
+  Vue.use(Vuetify, {
+    components: {
+      VApp,
+      VGrid,
+      VFooter,
+      VToolBar,
+      VNavDrawer,
+      VTabs,
+      VMenu,
+      VList,
+      VPagination,
+      VSubheader,
+      VParallax,
+      VBtn,
+      VCard,
+      VAvatar,
+      VChip,
+      VDivider,
+      VSnackbar
+    },
+    directives,
+    theme: theme.colors
+    // options: {
+    // }
+  })
 }
 
 export default { install }

@@ -1,45 +1,51 @@
 <template>
-    <div class="container post-main">
-        <article class="post-content">
-            <div class="post-date">{{$page.frontmatter.date}}</div>
-            <Content class="markdown-content"></Content>
-            <ul class="post-tags">
-                <li v-for="tag in $page.frontmatter.tags">{{tag}}</li>
-            </ul>
-        </article>
-    </div>
+  <v-container grid-list-xl
+               align-center
+               class="blog-container">
+    <v-layout row
+              wrap>
+      <v-flex xs12>
+        <PostCard :post="$page"
+                  :shadowZ="20">
+          <Content></Content>
+        </PostCard>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 <script>
+import PostCard from './components/PostCard'
+
 export default {
-    name: ''
+  components: {
+    PostCard
+  },
 }
 </script>
-<style lang="less">
-@import './styles/config.less';
+<style lang="stylus">
+.content.custom {
+  display: block;
+  font-size: 15px;
 
-.post-main {
-    padding: 0 0 50px;
-}
-.post-tags {
-    li {
-        display: inline-block;
-        margin: 0 4px;
-        padding: 4px 16px;
-        background: #eee;
+  code {
+    margin: 0 4px;
+  }
+
+  pre {
+    code {
+      margin: 0;
+      background-color: transparent;
+      box-shadow: none;
+      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+
+      &:before, &:after {
+        content: '';
+        letter-spacing: 0;
+      }
     }
-}
-.post-date {
-    margin-bottom: 10px;
-    color: @secondaryTextColor;
-    font-size: 13px;
-    font-weight: bold;
-}
-.post-content {
-    margin-top: -20px;
-    min-height: 100px;
-    padding: 35px;
-    background: #fff;
-    border-radius: 4px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
 }
 </style>

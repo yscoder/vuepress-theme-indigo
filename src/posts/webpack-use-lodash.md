@@ -4,12 +4,14 @@ tags: [Webpack, Lodash]
 date: 2016-12-17 01:41:21
 description: Webpakck打包优化，按需打包Lodash模块。
 ---
+
 在数据操作时，Lodash 就是我的弹药库，不管遇到多复杂的数据结构都能用一些函数轻松拆解。
 
 ES6 中也新增了诸多新的对象函数，一些简单的项目中 ES6 就足够使用了，但还是会有例外的情况引用了少数的 Lodash 函数。一个完整的 Lodash 库，即使是压缩后，现最新版本也有 `71k` 的体积。不能为了吃一口饭而买下一个饭店啊。
 
 针对这个问题，其实已经有很多可选方案了。
-<!--more-->
+
+<!-- more -->
 
 ## 函数模块
 
@@ -20,7 +22,6 @@ Lodash 中的每个函数在 NPM 都有一个单独的发布模块。[NPM: resul
 var isEqual = require('lodash.isequal')
 // or ES6
 import isEqual from 'lodash.isequal'
-
 
 isEqual([1, 2, 3], [1, 2, 3]) // true
 ```
@@ -34,13 +35,12 @@ var difference = require('lodash/difference')
 // or ES6
 import difference from 'lodash/difference'
 
-difference([1, 2], [1, 3])  // [2]
+difference([1, 2], [1, 3]) // [2]
 ```
 
 ## 使用插件优化
 
-在简单场景下，以上两种方式足以解决问题。
-而遇到复杂的数据对象时，我们不得不在一个文件中引入多个 Lodash 函数，这样就需要在文件中写多个`require`或`import`相关函数。
+在简单场景下，以上两种方式足以解决问题。而遇到复杂的数据对象时，我们不得不在一个文件中引入多个 Lodash 函数，这样就需要在文件中写多个`require`或`import`相关函数。
 
 ```js
 import remove from 'lodash/remove'
@@ -63,52 +63,48 @@ $ npm i -S lodash-webpack-plugin babel-plugin-lodash babel-core babel-loader bab
 **配置：**
 
 ```js webpack.config.js
-var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-var webpack = require('webpack');
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
+var webpack = require('webpack')
 
 module.exports = {
   module: {
-    loaders: [{
-      loader: 'babel',
-      test: /\.js$/,
-      exclude: /node_modules/,
-      query: {
-        plugins: ['transform-runtime', 'lodash'],
-        presets: ['es2015']
+    loaders: [
+      {
+        loader: 'babel',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        query: {
+          plugins: ['transform-runtime', 'lodash'],
+          presets: ['es2015']
+        }
       }
-    }]
+    ]
   },
-  plugins: [
-    new LodashModuleReplacementPlugin,
-    new webpack.optimize.OccurrenceOrderPlugin,
-    new webpack.optimize.UglifyJsPlugin
-  ]
+  plugins: [new LodashModuleReplacementPlugin(), new webpack.optimize.OccurrenceOrderPlugin(), new webpack.optimize.UglifyJsPlugin()]
 }
 ```
 
 其中`babel-plugin-lodash`的配置，也就是`plugins: ['lodash']`，并不是一定要在`loaders`中，也可以单独定义`babel`。
 
 ```js webpack.config.js
-var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-var webpack = require('webpack');
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
+var webpack = require('webpack')
 
 module.exports = {
   module: {
-    loaders: [{
-      loader: 'babel',
-      test: /\.js$/,
-      exclude: /node_modules/
-    }]
+    loaders: [
+      {
+        loader: 'babel',
+        test: /\.js$/,
+        exclude: /node_modules/
+      }
+    ]
   },
   babel: {
     presets: ['es2015'],
     plugins: ['transform-runtime', 'lodash']
   },
-  plugins: [
-    new LodashModuleReplacementPlugin,
-    new webpack.optimize.OccurrenceOrderPlugin,
-    new webpack.optimize.UglifyJsPlugin
-  ]
+  plugins: [new LodashModuleReplacementPlugin(), new webpack.optimize.OccurrenceOrderPlugin(), new webpack.optimize.UglifyJsPlugin()]
 }
 ```
 
@@ -119,7 +115,7 @@ module.exports = {
 ```js
 import _ from 'lodash'
 
-_.add(1, 2)  // 打包时只会引入这一个函数模块
+_.add(1, 2) // 打包时只会引入这一个函数模块
 ```
 
 > 注意：必须要使用 ES2015 的模块引用方式才有效。

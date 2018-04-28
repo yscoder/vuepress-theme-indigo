@@ -1,22 +1,19 @@
 <template>
   <v-app>
-    <v-navigation-drawer app></v-navigation-drawer>
-    <Header :layout="layout"></Header>
+    <v-navigation-drawer app
+                         :mobile-break-point="mobilePoint"
+                         :mini-variant.sync="miniNav"
+                         :width="240"
+                         v-model="navVisible">
+      <SideNav></SideNav>
+    </v-navigation-drawer>
+    <Header :layout="layout"
+            @toggleNav="toggleNav"></Header>
     <v-content>
-      <v-container fluid>
-        <component :is="layout"></component>
-      </v-container>
+      <component :is="layout"></component>
       <Footer></Footer>
     </v-content>
   </v-app>
-  <!-- <div class="layout">
-        <SideNav></SideNav>
-        <div class="layout-container">
-            <Header :layout="layout"></Header>
-
-            <Footer></Footer>
-        </div>
-    </div> -->
 </template>
 <script>
 import Vue from 'vue'
@@ -41,7 +38,9 @@ export default {
   },
   data() {
     return {
-      isDark: true
+      navVisible: true,
+      miniNav: false,
+      mobilePoint: 1264
     }
   },
   computed: {
@@ -54,6 +53,14 @@ export default {
       const title = `${this.$siteTitle} · ${this.$site.themeConfig.subTitle}`
       const pageTitle = this.$page.title
       return (pageTitle ? `${pageTitle} · ` : '') + title
+    },
+    toggleNav() {
+      if (window.innerWidth > this.mobilePoint) {
+        this.miniNav = !this.miniNav
+      } else {
+        this.navVisible = !this.navVisible
+        this.miniNav = false
+      }
     }
   },
   created() {
@@ -101,4 +108,9 @@ export default {
   },
 }
 </script>
-
+<style src="@fortawesome/fontawesome-free-webfonts/css/fa-solid.css"></style>
+<style src="@fortawesome/fontawesome-free-webfonts/css/fa-regular.css"></style>
+<style src="@fortawesome/fontawesome-free-webfonts/css/fa-brands.css"></style>
+<style src="@fortawesome/fontawesome-free-webfonts/css/fontawesome.css"></style>
+<style src="./styles/theme.styl" lang="stylus"></style>
+<style src="prismjs/themes/prism-tomorrow.css"></style>

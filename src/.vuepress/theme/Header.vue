@@ -5,7 +5,8 @@
              color="primary"
              :height="56"
              :scroll-threshold="100">
-    <v-btn icon>
+    <v-btn icon
+           @click="toggleNav">
       <i class="fa fa-bars"></i>
     </v-btn>
     <v-toolbar-title>{{$page.title || $siteTitle}}</v-toolbar-title>
@@ -28,6 +29,11 @@
 export default {
   props: {
     layout: String
+  },
+  methods: {
+    toggleNav() {
+      this.$emit('toggleNav')
+    }
   }
 }
 </script>

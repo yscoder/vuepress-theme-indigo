@@ -1,8 +1,7 @@
 <template>
-  <v-footer dark
-            class="blog-footer darken-1 mt-4"
-            color="primary"
-            height="auto">
+  <v-footer color="primary"
+            height="auto"
+            class="blog-footer darken-1 mt-4">
     <v-card flat
             tile
             color="primary"

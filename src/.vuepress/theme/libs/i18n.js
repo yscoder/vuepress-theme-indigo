@@ -1,6 +1,5 @@
 export default {
-    install(Vue, siteData) {
-        const lang = siteData.themeConfig.lang
+    install(Vue, lang) {
         const locals = require(`../languages/${lang}`)
 
         // $t('hello') -> '你好'

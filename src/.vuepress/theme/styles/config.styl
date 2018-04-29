@@ -1,4 +1,4 @@
-$body-font-family = -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Helvetica,"PingFang SC", "Hiragino Sans GB","Microsoft YaHei",SimSun,sans-serif
+$body-font-family = -apple-system,BlinkMacSystemFont,Roboto,"Segoe UI","Helvetica Neue",Helvetica,"PingFang SC", "Hiragino Sans GB","Microsoft YaHei",SimSun,sans-serif
 $font-size-root = 14px
 $line-height-root = 1.5
 
@@ -10,9 +10,41 @@ $grid-breakpoints = {
   xl: 1600px
 }
 
+$font-roboto = './fonts/roboto'
+$font-code = Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace
+
+$container-max-width = 1000px
 $primary-color = #3F51B5
 $light-primary-color = lighten($primary-color, 50%)
 $content-color = #424242
-$content-tip-color = #4caf50
-$content-warning-color = #FF9800
-$content-danger-color = #ff5722
+$gray-color = #757575
+
+$custom-blocks = {
+  tip: #4caf50
+  warning: #FF9800
+  danger: #ff5722
+}
+
+$code-languages = {
+  js: 'js' 'javascript'
+  html: 'html' 'markup'
+  md: 'md' 'markdown'
+  vue: 'vue'
+  css: 'css'
+  less: 'less'
+  sass: 'sass'
+  scss: 'scss'
+  stylus: 'stylus'
+  jsx: 'jsx'
+  ts: 'ts' 'typescript'
+  json: 'json'
+  yaml: 'yaml'
+  bash: 'bash'
+  c: 'c'
+  java: 'java'
+  kotlin: 'kotlin'
+  python: 'py' 'python'
+  csharp: 'c#' 'csharp'
+  go: 'go'
+  sql: 'sql'
+}

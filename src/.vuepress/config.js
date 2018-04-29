@@ -68,7 +68,7 @@ module.exports = {
     colors: {
       // generate by https://vuetifyjs.com/zh-Hans/theme-generator
       primary: '#3F51B5',
-      secondary: '#3F51B5',
+      secondary: '#757575',
       accent: '#E91E63',
       error: '#f44336',
       warning: '#FFC107',

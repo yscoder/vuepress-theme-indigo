@@ -37,10 +37,11 @@ export default {
     Post
   },
   data() {
+    const mobilePoint = 1264
     return {
-      navVisible: true,
+      navVisible: window.innerWidth > mobilePoint,
       miniNav: false,
-      mobilePoint: 1264
+      mobilePoint
     }
   },
   computed: {

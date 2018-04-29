@@ -4,7 +4,8 @@
              scroll-off-screen
              color="primary"
              :height="56"
-             :scroll-threshold="100">
+             :scroll-threshold="100"
+             class="blog-toolbar">
     <v-btn icon
            @click="toggleNav">
       <i class="fa fa-bars"></i>
@@ -18,12 +19,6 @@
       <i class="fa fa-share-alt"></i>
     </v-btn>
   </v-toolbar>
-  <!-- <header class="header">
-        <div class="header-container container">
-            <h1 class="header-title">{{$page.title || $siteTitle}}</h1>
-            <h5 class="header-subtitle" v-if="layout === 'Home'">{{$site.themeConfig.subTitle}}</h5>
-        </div>
-    </header> -->
 </template>
 <script>
 export default {
@@ -37,22 +32,12 @@ export default {
   }
 }
 </script>
-<style lang="less">
-@import './styles/config.less';
+<style lang="stylus">
+@import './styles/config.styl';
 
-.header {
-    min-height: 210px;
-    padding: 104px 16px 48px 16px;
-    color: @textPrimaryColor;
-    background: @primaryColor;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    &-title {
-        font-weight: 500;
-    }
-    &-subtitle {
-        padding-top: 6px;
-        font-weight: 300;
-        color: @lightPrimaryColor;
-    }
+.blog-toolbar {
+  .toolbar__title {
+    font-size: 18px;
+  }
 }
 </style>

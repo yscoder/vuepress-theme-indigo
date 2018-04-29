@@ -7,7 +7,8 @@
       <v-flex xs12
               v-for="slug in $blog.postList"
               :key="slug">
-        <PostCard :post="slug"></PostCard>
+        <PostCard :post="slug"
+                  layout="list"></PostCard>
       </v-flex>
     </v-layout>
   </v-container>

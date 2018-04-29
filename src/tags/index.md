@@ -1,4 +1,4 @@
 ---
-layout: Tags
+layout: tags
 title: Tags
 ---

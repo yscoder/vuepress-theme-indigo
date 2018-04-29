@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   base: '/vuepress-theme-indigo/',
   dest: 'docs',
@@ -21,6 +23,13 @@ module.exports = {
       lang: 'zh-CN',
       title: "Yusen's Blog",
       description: '王昱森的博客。无所谓做什么，只要是当前最感兴趣的事！随心、随性、随缘！'
+    }
+  },
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@pub': path.join(__dirname, './public')
+      }
     }
   },
   themeConfig: {
@@ -65,6 +74,10 @@ module.exports = {
       warning: '#FFC107',
       info: '#00B8D4',
       success: '#4caf50'
+    },
+    format: {
+      date: 'YYYY年MM月DD日',
+      dateTime: 'YYYY年MM月DD日 HH:mm:ss'
     }
   }
 }

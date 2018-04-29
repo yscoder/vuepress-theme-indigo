@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app v-scroll="onScroll">
     <v-navigation-drawer app
                          :mobile-break-point="mobilePoint"
                          :mini-variant.sync="miniNav"
@@ -13,6 +13,17 @@
       <component :is="layout"></component>
       <Footer></Footer>
     </v-content>
+    <transition name="scale-transition">
+      <v-btn fab
+             fixed
+             right
+             bottom
+             color="accent"
+             @click="$vuetify.goTo(0)"
+             v-show="offsetTop > 300">
+        <i class="fa fa-lg fa-chevron-up"></i>
+      </v-btn>
+    </transition>
   </v-app>
 </template>
 <script>
@@ -41,7 +52,8 @@ export default {
     return {
       navVisible: window.innerWidth > mobilePoint,
       miniNav: false,
-      mobilePoint
+      mobilePoint,
+      offsetTop: 0
     }
   },
   computed: {
@@ -62,6 +74,9 @@ export default {
         this.navVisible = !this.navVisible
         this.miniNav = false
       }
+    },
+    onScroll(e) {
+      this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
     }
   },
   created() {

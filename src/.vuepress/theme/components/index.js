@@ -16,7 +16,7 @@ import VAvatar from 'vuetify/es5/components/VAvatar'
 import VChip from 'vuetify/es5/components/VChip'
 import VDivider from 'vuetify/es5/components/VDivider'
 import VSnackbar from 'vuetify/es5/components/VSnackbar'
-import directives from 'vuetify/es5/directives'
+import * as directives from 'vuetify/es5/directives'
 
 const install = (Vue, theme) => {
   Vue.use(Vuetify, {

@@ -1,5 +1,11 @@
 <template>
   <v-app v-scroll="onScroll">
+    <v-progress-linear :height="4"
+                       color="accent"
+                       :indeterminate="progressRunning"
+                       :background-opacity="0.4"
+                       class="blog-progress"
+                       v-show="progressRunning"></v-progress-linear>
     <v-navigation-drawer app
                          :mobile-break-point="mobilePoint"
                          :mini-variant.sync="miniNav"
@@ -28,7 +34,6 @@
 </template>
 <script>
 import Vue from 'vue'
-import nprogress from 'nprogress'
 import SideNav from './SideNav'
 import Header from './Header'
 import Footer from './Footer'
@@ -55,7 +60,8 @@ export default {
       navVisible: true,
       miniNav: false,
       mobilePoint: 1264,
-      offsetTop: 0
+      offsetTop: 0,
+      progressRunning: false
     }
   },
   computed: {
@@ -108,19 +114,15 @@ export default {
     this.$watch('$page', updateMeta)
     updateMeta()
 
-    // configure progress bar
-    nprogress.configure({ showSpinner: false })
-
     this.$router.beforeEach((to, from, next) => {
       if (to.path !== from.path && !Vue.component(pathToComponentName(to.path))) {
-        nprogress.start()
+        this.progressRunning = true
       }
       next()
     })
 
     this.$router.afterEach(() => {
-      nprogress.done()
-      this.isSidebarOpen = false
+      this.progressRunning = false
     })
   },
   beforeDestroy() {

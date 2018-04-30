@@ -1,18 +1,18 @@
 <template>
-    <div class="container tags-main">
-        <ul class="tags-list default">
-            <li v-for="item in $blog.tagList"
-                :key="item">{{item}}</li>
-        </ul>
-    </div>
+  <div class="container tags-main">
+    <ul class="tags-list default">
+      <li v-for="item in $blog.tagList"
+          :key="item">{{item}}</li>
+    </ul>
+  </div>
 </template>
 <script>
 export default {
-    name: ''
+  name: ''
 }
 </script>
-<style lang="less">
+<style lang="stylus">
 .tags-main {
-    padding: 30px 0;
+  padding: 30px 0;
 }
 </style>

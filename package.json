@@ -51,8 +51,6 @@
     "koa-connect": "^2.0.1",
     "koa-mount": "^3.0.0",
     "koa-static": "^4.0.2",
-    "less": "^3.0.2",
-    "less-loader": "^4.1.0",
     "loader-utils": "^1.1.0",
     "lodash": "^4.17.10",
     "lru-cache": "^4.1.2",

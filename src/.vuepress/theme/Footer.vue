@@ -42,7 +42,6 @@ export default {
 }
 </script>
 <style lang="stylus">
-/* @import './styles/config.less' */
 .blog-footer {
   font-size: 13px;
 

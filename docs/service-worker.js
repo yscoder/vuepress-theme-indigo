@@ -21,11 +21,11 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.1.0/workbox
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "2f085b4ff2abb5ee6da89bca5641d0b6"
+    "revision": "dadea94c2792f45e772d7d45501071d1"
   },
   {
-    "url": "assets/css/8.styles.6aaa9962.css",
-    "revision": "47f9a87dfeb4e6077d9b26f6226eec65"
+    "url": "assets/css/8.styles.7a1efded.css",
+    "revision": "e98fdff131396776f585d142f3018e47"
   },
   {
     "url": "assets/fonts/fa-brands-400.9404b3cb.woff2",
@@ -156,80 +156,88 @@ self.__precacheManifest = [
     "revision": "55c9d89de66c7f697ead1b3ac10b008e"
   },
   {
-    "url": "assets/js/0.66cca5b9.js",
-    "revision": "4ea73f65aac8379a1a68ac389f2bc5cf"
+    "url": "assets/js/0.1dea69ed.js",
+    "revision": "58dc3949b6de40040f2e16c314b82c59"
   },
   {
-    "url": "assets/js/1.8cb983ee.js",
-    "revision": "cd45d81b78c2dde67f5995e7a0e432b7"
+    "url": "assets/js/1.9f3090f9.js",
+    "revision": "4942e2c53d036e47e9e6e1ddea2646d3"
   },
   {
-    "url": "assets/js/2.6a18da5d.js",
-    "revision": "839b346eb0c339205d00d6aa048309a1"
+    "url": "assets/js/2.0f95574c.js",
+    "revision": "4406be0998c65025136ea67503546d33"
   },
   {
-    "url": "assets/js/3.cd3276b5.js",
-    "revision": "0416ad8c4bfa3df6cbea55ca1fe61904"
+    "url": "assets/js/3.e32cdc76.js",
+    "revision": "9b1dd7ea1f4a313dc80a900c7799a5d4"
   },
   {
-    "url": "assets/js/4.a64048d8.js",
-    "revision": "c303b18ceaec2e3089c5deeb077d06d1"
+    "url": "assets/js/4.ffd2664e.js",
+    "revision": "dd39e511cfa984ea905ae3a269671053"
   },
   {
-    "url": "assets/js/5.9c11547d.js",
-    "revision": "e0b385c20e2efab4148a9d10b48699c6"
+    "url": "assets/js/5.162622aa.js",
+    "revision": "157bf9b0fc611c87a565cf15ed09041a"
   },
   {
-    "url": "assets/js/6.009f572a.js",
-    "revision": "b2e1a6b9383f943fa5c6b440290a4c31"
+    "url": "assets/js/6.4fa749e3.js",
+    "revision": "b3c747ad2b9b7b3898a3196bdad21b4b"
   },
   {
-    "url": "assets/js/7.37118fa8.js",
-    "revision": "4218346486301c4620c515dae16307cf"
+    "url": "assets/js/7.064aacd4.js",
+    "revision": "8eb27a2328aff3330c27a12023d66855"
   },
   {
-    "url": "assets/js/app.d08bffb0.js",
-    "revision": "e6fbdc8a636c70f7f261d21d35de5ae7"
+    "url": "assets/js/app.abc12198.js",
+    "revision": "c24bdacd8100c1280c5b8bb2d5f84771"
   },
   {
     "url": "face.jpg",
     "revision": "55c9d89de66c7f697ead1b3ac10b008e"
   },
   {
-    "url": "favicon.png",
+    "url": "icons/192.png",
+    "revision": "68bb209813d9962fe145b690d1838fc8"
+  },
+  {
+    "url": "icons/512.png",
+    "revision": "3987835f3e7dfed8d78e559e34c49596"
+  },
+  {
+    "url": "icons/favicon.png",
     "revision": "cfa97d05be7622e0f57799d7149b93f0"
   },
   {
     "url": "index.html",
-    "revision": "cdeb0499a64200285b8c512d83a1ef23"
+    "revision": "2d1fc6be61031d32f9866992602cff5e"
   },
   {
     "url": "posts/cursor-offset-at-input.html",
-    "revision": "30168a3138c83c8d08d91586586974d5"
+    "revision": "63c7ea6fcb134814db9e9505bc314cd8"
   },
   {
     "url": "posts/test-markdown.html",
-    "revision": "0a8824d3ecb21d71ebd88cc1ac733a84"
+    "revision": "4a7a8973fe301efe8a2b44621dfb5c7b"
   },
   {
     "url": "posts/text-truncation.html",
-    "revision": "ca39fb02edd1f9f441d80dbdfe260cdd"
+    "revision": "95f663956b199c5411bbfac0026bfddc"
   },
   {
     "url": "posts/vue-best-practices.html",
-    "revision": "fa19f8efb0ec3285088512eaab3f5185"
+    "revision": "5304675aad8281b9513fa92414ef2cae"
   },
   {
     "url": "posts/webpack-use-lodash.html",
-    "revision": "1a0df79922f47995d9f5e402715ce734"
+    "revision": "7ba8f8ae9d42b20114e0b3ce3f11ee02"
   },
   {
     "url": "posts/write-good-front-end-component.html",
-    "revision": "1e90d2a066f0d85a0900ae52241067f9"
+    "revision": "9baef92b140aecc08f1a34f06183d5d9"
   },
   {
     "url": "tags/index.html",
-    "revision": "ba5595bc482f7b4252e274f6494c1011"
+    "revision": "0845742089b7995b713ae513d71e5e72"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();

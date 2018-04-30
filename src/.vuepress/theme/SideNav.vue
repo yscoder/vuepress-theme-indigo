@@ -24,10 +24,10 @@
                    :to="!item.external ? item.url : null"
                    :href="item.external ? item.url : null"
                    :target="item.external ? '_blank' : null"
-                   exact-active-class="nav-active">
+                   exact-active-class="nav-active"
+                   color="secondary">
         <v-list-tile-avatar>
-          <i :class="item.icon"
-             class="nav-icon"></i>
+          <i :class="item.icon"></i>
         </v-list-tile-avatar>
         <v-list-tile-content>{{item.text}}</v-list-tile-content>
       </v-list-tile>
@@ -46,10 +46,6 @@ export default {
 </script>
 <style lang="stylus">
 @import './styles/config.styl';
-
-.nav-icon {
-  color: rgba(0, 0, 0, 0.7);
-}
 
 .nav-active {
   .nav-icon {

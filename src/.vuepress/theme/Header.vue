@@ -15,13 +15,20 @@
     <v-btn icon>
       <i class="fa fa-search"></i>
     </v-btn>
-    <v-btn icon>
-      <i class="fa fa-share-alt"></i>
-    </v-btn>
+    <Share origin="top right">
+      <v-btn icon>
+        <i class="fa fa-share-alt"></i>
+      </v-btn>
+    </Share>
   </v-toolbar>
 </template>
 <script>
+import Share from './components/Share'
+
 export default {
+  components: {
+    Share
+  },
   props: {
     layout: String
   },

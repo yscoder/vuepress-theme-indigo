@@ -5,7 +5,7 @@
     <v-layout row
               wrap
               tag="ul"
-              class="reset">
+              reset>
       <v-flex xs12
               v-for="slug in $blog.postList"
               :key="slug"

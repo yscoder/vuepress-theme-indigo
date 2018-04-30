@@ -2,9 +2,10 @@ const path = require('path')
 const nodeExternals = require('webpack-node-externals')
 
 const resolve = pathName => path.join(__dirname, pathName)
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  base: '/vuepress-theme-indigo/',
+  base: isProd ? '/vuepress-theme-indigo/' : '/',
   dest: 'docs',
   title: "Yusen's Blog",
   description: '王昱森的博客。无所谓做什么，只要是当前最感兴趣的事！随心、随性、随缘！',

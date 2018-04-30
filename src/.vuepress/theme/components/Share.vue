@@ -2,7 +2,7 @@
   <v-menu bottom
           transition="scale-transition"
           :origin="origin"
-          v-if="!!socials">
+          v-show="!!socials">
     <template slot="activator">
       <slot></slot>
     </template>
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
   },
-  beforeMounted() {
+  beforeMount() {
     const customSocials = this.$site.themeConfig.socials
     if (!this.$isServer && customSocials) {
       const createShare = () => {

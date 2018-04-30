@@ -7,7 +7,7 @@
       <v-flex xs12
               class="mb-3">
         <PostCard :post="$page"
-                  :shadowZ="20"
+                  :shadowZ="16"
                   layout="post">
           <Content></Content>
         </PostCard>

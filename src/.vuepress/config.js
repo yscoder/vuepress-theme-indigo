@@ -1,4 +1,7 @@
 const path = require('path')
+const nodeExternals = require('webpack-node-externals')
+
+const resolve = pathName => path.join(__dirname, pathName)
 
 module.exports = {
   base: '/vuepress-theme-indigo/',
@@ -25,12 +28,20 @@ module.exports = {
       description: '王昱森的博客。无所谓做什么，只要是当前最感兴趣的事！随心、随性、随缘！'
     }
   },
-  configureWebpack: {
-    resolve: {
-      alias: {
-        '@pub': path.join(__dirname, './public')
+  configureWebpack: (config, isServer) => {
+    const myConfig = {
+      resolve: {
+        alias: {
+          '@pub': resolve('./public')
+        }
       }
     }
+    if (isServer) {
+      myConfig.externals = nodeExternals({
+        whitelist: [/vuetify/, /fortawesome/, /prismjs/]
+      })
+    }
+    return myConfig
   },
   themeConfig: {
     lang: 'zh-CN',

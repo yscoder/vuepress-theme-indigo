@@ -50,9 +50,9 @@ export default {
   data() {
     const mobilePoint = 1264
     return {
-      navVisible: window.innerWidth > mobilePoint,
+      navVisible: true,
       miniNav: false,
-      mobilePoint,
+      mobilePoint: 1264,
       offsetTop: 0
     }
   },
@@ -84,6 +84,8 @@ export default {
       this.$ssrContext.title = this.createTitle()
       this.$ssrContext.lang = this.$lang
       this.$ssrContext.description = this.$page.description || this.$description
+    } else {
+      this.navVisible = window.innerWidth > this.mobilePoint
     }
   },
   mounted() {
@@ -128,5 +130,5 @@ export default {
 <style src="@fortawesome/fontawesome-free-webfonts/css/fa-regular.css"></style>
 <style src="@fortawesome/fontawesome-free-webfonts/css/fa-brands.css"></style>
 <style src="@fortawesome/fontawesome-free-webfonts/css/fontawesome.css"></style>
-<style src="./styles/theme.styl" lang="stylus"></style>
 <style src="prismjs/themes/prism-tomorrow.css"></style>
+<style src="./styles/theme.styl" lang="stylus"></style>

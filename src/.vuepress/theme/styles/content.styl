@@ -59,11 +59,20 @@ code, kbd, pre, samp
   }
 
   blockquote {
-    padding 8px 24px
-    border-left 5px solid $primary-color
-    background: #f5f5f5
+    margin 32px 0 32px 16px
+    padding 4px 24px
+    font-size 1.2em
+    font-style italic
+    color $gray-color
+    border-left 6px solid $primary-color
     p {
-      margin: 4px 0
+      margin-top: 0
+      &:last-child {
+        margin-bottom: 0
+      }
+    }
+    footer {
+      font-size 80%
     }
   }
 
@@ -158,6 +167,10 @@ code, kbd, pre, samp
     padding: 0 1.5rem;
     background-color: rgba(0, 0, 0, 66%);
   }
+
+  *:first-child {
+    margin-top 0
+  }
 }
 
 for type, exts in $code-languages
@@ -171,7 +184,7 @@ for type, exts in $code-languages
 .custom-block
   margin-bottom 20px
   padding 16px 24px 0.2em
-  border-left-width 5px
+  border-left-width 6px
   border-left-style solid
   border-radius 4px
   &-title

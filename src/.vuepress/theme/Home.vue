@@ -3,10 +3,13 @@
                align-center
                class="blog-container">
     <v-layout row
-              wrap>
+              wrap
+              tag="ul"
+              class="reset">
       <v-flex xs12
               v-for="slug in $blog.postList"
-              :key="slug">
+              :key="slug"
+              tag="li">
         <PostCard :post="slug"
                   layout="list"></PostCard>
       </v-flex>

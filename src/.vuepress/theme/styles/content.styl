@@ -3,7 +3,7 @@ code, kbd, pre, samp
 
 .content.custom {
   display: block;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.8;
   color: $content-color;
 
@@ -11,13 +11,13 @@ code, kbd, pre, samp
     word-wrap: break-word;
   }
 
-  h1, h2, h3, h4, blockquote, ol, pre, table, ul, figure {
-    margin-bottom: 20px;
+  h1, h2, h3, h4, h5, h6, ol, ul, pre, table, figure {
+    margin-bottom: 1.2em
   }
 
   h1, h2, h3, h4, h5, h6 {
-    padding-top: 60px;
-    margin-top: -56px;
+    padding-top: 3.2em;
+    margin-top: -2em;
     color: $primary-color;
     text-transform: capitalize;
 
@@ -59,12 +59,12 @@ code, kbd, pre, samp
   }
 
   blockquote {
-    margin 32px 0 32px 16px
+    margin 2em 0 2em 1em
     padding 4px 24px
     font-size 1.2em
     font-style italic
     color $gray-color
-    border-left 6px solid $primary-color
+    border-left .375em solid $primary-color
     p {
       margin-top: 0
       &:last-child {
@@ -84,15 +84,15 @@ code, kbd, pre, samp
   code, kbd {
     display: inline;
     margin: 0 0.3em;
-    padding: 2px 4px;
+    padding: .125em .25em;
     box-shadow: none;
   }
 
   pre,
   pre[class*="language-"] {
-    margin-left: -28px;
-    margin-right: -28px;
-    padding: 20px 28px;
+    margin-left: -1.75em;
+    margin-right: -1.75em;
+    padding: 1.25em 1.75em;
     white-space: pre-wrap;
     word-break: break-word;
     line-height: 1.6;
@@ -104,7 +104,7 @@ code, kbd, pre, samp
       position: absolute;
       top: 0.8em;
       right: 1em;
-      font-size: 12px;
+      font-size: .86em;
       color: rgba(255, 255, 255, 0.7);
     }
   }
@@ -114,7 +114,7 @@ code, kbd, pre, samp
       margin: 0;
       padding: 0;
       background-color: transparent;
-      font-size: 15px;
+      font-size: .86em;
       font-weight: 500;
       color: rgba(255, 255, 255, 0.8);
 
@@ -127,13 +127,12 @@ code, kbd, pre, samp
 
   ol, ul {
     padding-left: 2em;
-    font-size: 14px;
+    font-size: .86em;
   }
 
   table {
     width: 100%;
     border: 1px solid #dedede;
-    margin: 15px 0;
     border-collapse: collapse;
     border-spacing: 0;
 
@@ -153,7 +152,7 @@ code, kbd, pre, samp
 
     td, th {
       border: 1px solid #dedede;
-      padding: 6px 12px;
+      padding: .375em .75em;
     }
   }
 
@@ -182,9 +181,9 @@ for type, exts in $code-languages
         content type
 
 .custom-block
-  margin-bottom 20px
-  padding 16px 24px 0.2em
-  border-left-width 6px
+  margin-bottom 1.2em
+  padding 1em 1.5em 0.2em
+  border-left-width .375em
   border-left-style solid
   border-radius 4px
   &-title

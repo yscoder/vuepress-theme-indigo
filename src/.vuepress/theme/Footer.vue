@@ -1,11 +1,11 @@
 <template>
   <v-footer color="primary"
             height="auto"
-            class="blog-footer darken-1 mt-4">
+            class="blog-footer darken-1 mt-3">
     <v-card flat
             tile
             color="primary"
-            class="primary--text text--lighten-4 text-xs-center">
+            class="primary--text text--lighten-4 text-xs-center py-3">
       <v-card-text v-html="$tt('license')"
                    class="pb-0"></v-card-text>
       <v-card-text class="pt-0 mt-1">

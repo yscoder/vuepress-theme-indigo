@@ -54,6 +54,7 @@ module.exports = {
     avatar: '/face.jpg',
     avatarLink: '/',
     menus: [
+      // icons by https://fontawesome.com/icons
       {
         text: 'Home',
         icon: 'fa fa-home',
@@ -75,6 +76,11 @@ module.exports = {
         icon: 'fab fa-weibo',
         url: 'https://www.weibo.com/ysweb',
         external: true
+      },
+      {
+        text: 'About',
+        icon: 'fa fa-user-secret',
+        url: '/about'
       }
     ],
     socials: ['Weibo', 'QQ', 'Facebook', 'Twitter', 'GooglePlus'],

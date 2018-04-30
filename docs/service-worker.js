@@ -21,7 +21,7 @@ importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.1.0/workbox
 self.__precacheManifest = [
   {
     "url": "404.html",
-    "revision": "dadea94c2792f45e772d7d45501071d1"
+    "revision": "1e72696e61dbf1ff794076d22f6937e8"
   },
   {
     "url": "assets/css/8.styles.7a1efded.css",
@@ -188,8 +188,8 @@ self.__precacheManifest = [
     "revision": "8eb27a2328aff3330c27a12023d66855"
   },
   {
-    "url": "assets/js/app.abc12198.js",
-    "revision": "c24bdacd8100c1280c5b8bb2d5f84771"
+    "url": "assets/js/app.fb417789.js",
+    "revision": "068c5aeaf780e22a52d159a5e33c765e"
   },
   {
     "url": "face.jpg",
@@ -209,35 +209,35 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "2d1fc6be61031d32f9866992602cff5e"
+    "revision": "fde3192a03dd7f3456075a7fee2b64f2"
   },
   {
     "url": "posts/cursor-offset-at-input.html",
-    "revision": "63c7ea6fcb134814db9e9505bc314cd8"
+    "revision": "30116701b85aba3af22ab385b7e67bdb"
   },
   {
     "url": "posts/test-markdown.html",
-    "revision": "4a7a8973fe301efe8a2b44621dfb5c7b"
+    "revision": "b77e43e5b953e0e64f235979554c2410"
   },
   {
     "url": "posts/text-truncation.html",
-    "revision": "95f663956b199c5411bbfac0026bfddc"
+    "revision": "0704826d389dd466b662da9c3bc65d33"
   },
   {
     "url": "posts/vue-best-practices.html",
-    "revision": "5304675aad8281b9513fa92414ef2cae"
+    "revision": "b36d06f6e21c027f715c972fe63bfa0d"
   },
   {
     "url": "posts/webpack-use-lodash.html",
-    "revision": "7ba8f8ae9d42b20114e0b3ce3f11ee02"
+    "revision": "26b125334620102210b54bfb0f981f5d"
   },
   {
     "url": "posts/write-good-front-end-component.html",
-    "revision": "9baef92b140aecc08f1a34f06183d5d9"
+    "revision": "c6d9c7b39f75915da9be6ef60022bf91"
   },
   {
     "url": "tags/index.html",
-    "revision": "0845742089b7995b713ae513d71e5e72"
+    "revision": "50f636935bbb267e350566773674cdb9"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();

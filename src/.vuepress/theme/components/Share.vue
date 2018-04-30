@@ -37,7 +37,7 @@ export default {
   },
   methods: {
   },
-  created() {
+  beforeMounted() {
     const customSocials = this.$site.themeConfig.socials
     if (!this.$isServer && customSocials) {
       const createShare = () => {

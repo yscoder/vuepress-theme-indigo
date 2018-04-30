@@ -2,13 +2,13 @@ import sortBy from 'lodash/sortBy'
 import dayjs from 'dayjs'
 
 const slugReg = /\/([^\/]+).html$/
-const matchSlug = path => {
+function matchSlug(path) {
   const arr = path.match(slugReg)
   return arr ? arr[1] : null
 }
 
 const install = (Vue, { theme, pages }) => {
-  // 尝试不依赖已有内置数据，在这里对 siteData 解析、组装成自己需要的数据结构
+  // 不依赖已有的内置数据，在这里对 siteData 解析，组装博客需要的数据混入Vue
   // Example： { postList: [], posts: {}, tagList: [], tags: { }  }
   const postList = []
   const posts = {}
@@ -49,6 +49,17 @@ const install = (Vue, { theme, pages }) => {
         return {
           prev: prev ? posts[prev] : null,
           next: next ? posts[next] : null
+        }
+      },
+      $page() {
+        // override $page data
+        const { path, meta } = this.$route
+        for (let i = 0; i < pages.length; i++) {
+          const page = pages[i]
+          const layout = page.frontmatter.layout || 'post'
+          if (page.path === path || layout === meta.layout) {
+            return { ...page, path } // rewrite path
+          }
         }
       }
     }

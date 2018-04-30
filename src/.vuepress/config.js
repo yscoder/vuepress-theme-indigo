@@ -97,6 +97,16 @@ module.exports = {
     format: {
       date: 'YYYY年MM月DD日',
       dateTime: 'YYYY年MM月DD日 HH:mm:ss'
+    },
+    pagination: {
+      path: '/page/:pageNum',
+      pageSize: 5
+    },
+    tags: {
+      path: '/tags/:tagName'
+    },
+    categories: {
+      path: '/categories/:category'
     }
   }
 }

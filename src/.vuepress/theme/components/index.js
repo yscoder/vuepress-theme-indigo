@@ -16,6 +16,7 @@ import VAvatar from 'vuetify/es5/components/VAvatar'
 import VChip from 'vuetify/es5/components/VChip'
 import VDivider from 'vuetify/es5/components/VDivider'
 import VSnackbar from 'vuetify/es5/components/VSnackbar'
+import VProgressLinear from 'vuetify/es5/components/VProgressLinear'
 import * as directives from 'vuetify/es5/directives'
 
 const install = (Vue, theme) => {
@@ -37,7 +38,8 @@ const install = (Vue, theme) => {
       VAvatar,
       VChip,
       VDivider,
-      VSnackbar
+      VSnackbar,
+      VProgressLinear
     },
     directives,
     theme: theme.colors

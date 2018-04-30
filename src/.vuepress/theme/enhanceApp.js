@@ -1,23 +1,12 @@
 import i18n from './libs/i18n'
 import blog from './libs/blog'
+import routes from './libs/routes'
 import components from './components'
 
-const Layout = () => import('./Layout')
-
 export default ({ Vue, options, router, siteData }) => {
-  const { themeConfig, pages } = siteData
-  Vue.use(i18n, themeConfig.lang)
-  Vue.use(blog, { theme: themeConfig, pages })
-  Vue.use(components, themeConfig)
-
-  router.addRoutes([
-    {
-      path: '/page/:pageNum',
-      component: Layout
-    },
-    {
-      path: '/tags/:tagName',
-      component: Layout
-    }
-  ])
+  const { themeConfig: theme, pages } = siteData
+  Vue.use(i18n, theme.lang)
+  Vue.use(blog, { theme, pages })
+  Vue.use(routes, { router, theme })
+  Vue.use(components, theme)
 }

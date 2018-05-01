@@ -8,7 +8,7 @@
         <router-link :to="page.path"
                      class="headline post-title-link"
                      v-if="isList">{{page.title}}</router-link>
-        <h2 class="display-1 mb-2"
+        <h2 class="display-1 mb-3"
             v-else>{{page.title}}</h2>
         <div class="post-meta">
           <time class="secondary--text"

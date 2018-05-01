@@ -18,7 +18,7 @@
     <v-divider dark></v-divider>
     <v-list class="nav-list">
       <v-list-tile ripple
-                   exact
+                   :exact="item.url === '/'"
                    v-for="item in content.menus"
                    :key="item.text"
                    :to="!item.external ? item.url : null"

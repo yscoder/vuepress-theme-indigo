@@ -11,8 +11,7 @@
         <h2 class="display-1 mb-3"
             v-else>{{page.title}}</h2>
         <div class="post-meta">
-          <time class="secondary--text"
-                :datetime="page.frontmatter.date">{{page.frontmatter.date | date}}</time>
+          <PostTime :date="page.frontmatter.date"></PostTime>
         </div>
       </v-flex>
     </v-card-title>
@@ -23,16 +22,22 @@
     </v-card-text>
     <v-card-actions>
       <v-flex xs12>
-        <v-chip label
-                small
-                v-for="tag in page.frontmatter.tags"
-                :key="tag">{{tag}}</v-chip>
+        <Tag v-for="tag in page.frontmatter.tags"
+             :key="tag"
+             :slug="tag">{{tag}}</Tag>
       </v-flex>
     </v-card-actions>
   </v-card>
 </template>
 <script>
+import Tag from './Tag'
+import PostTime from './PostTime'
+
 export default {
+  components: {
+    Tag,
+    PostTime
+  },
   props: {
     post: {
       type: [String, Object],
@@ -49,7 +54,7 @@ export default {
       return this.layout === 'list'
     },
     page() {
-      return this.isList ? this.$blog.posts[this.post] : this.post
+      return typeof this.post === 'string' ? this.$blog.posts[this.post] : this.post
     },
     cardClass() {
       return [
@@ -96,12 +101,6 @@ export default {
       visibility: visible;
       transform: scaleX(1);
     }
-  }
-}
-
-.post-meta {
-  time {
-    font-weight: 500;
   }
 }
 </style>

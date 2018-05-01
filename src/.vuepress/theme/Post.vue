@@ -15,26 +15,24 @@
       <v-flex xs6
               class="text-xs-left">
         <v-btn flat
-               color="primary"
                :to="$postNav.prev.path"
                v-if="$postNav.prev"
                class="post-nav">
           <div class="grey--text">
             <i class="fa mr-1 fa-chevron-left"></i>{{$tt('postNav_prev')}}</div>
-          <div class="title mt-1 hidden-xs-only">{{$postNav.prev.title}}</div>
+          <div class="title mt-1 primary--text hidden-xs-only">{{$postNav.prev.title}}</div>
         </v-btn>
       </v-flex>
       <v-flex xs6
               class="text-xs-right">
         <v-btn flat
-               color="primary"
                :to="$postNav.next.path"
                v-if="$postNav.next"
                class="post-nav">
           <div class="grey--text">{{$tt('postNav_next')}}
             <i class="fa ml-1 fa-chevron-right"></i>
           </div>
-          <div class="title mt-1 hidden-xs-only">{{$postNav.next.title}}</div>
+          <div class="title mt-1 primary--text hidden-xs-only">{{$postNav.next.title}}</div>
         </v-btn>
       </v-flex>
       <v-flex xs12

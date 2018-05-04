@@ -1,6 +1,6 @@
 <template>
   <v-app v-scroll="onScroll">
-    <v-progress-linear :height="4"
+    <v-progress-linear :height="3"
                        color="accent"
                        :indeterminate="progressRunning"
                        :background-opacity="0.4"

@@ -1,5 +1,5 @@
 <template>
-  <v-footer color="primary"
+  <v-footer dark
             height="auto"
             class="blog-footer darken-1 mt-3">
     <v-card flat

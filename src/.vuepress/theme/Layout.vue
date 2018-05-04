@@ -135,4 +135,3 @@ export default {
 <style src="@fortawesome/fontawesome-free-webfonts/css/fa-brands.css"></style>
 <style src="@fortawesome/fontawesome-free-webfonts/css/fontawesome.css"></style>
 <style src="prismjs/themes/prism-tomorrow.css"></style>
-<style src="./styles/theme.styl" lang="stylus"></style>

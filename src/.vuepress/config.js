@@ -35,6 +35,12 @@ module.exports = {
         alias: {
           '@pub': resolve('./public')
         }
+      },
+      module: {
+        rules: [{
+          test: /vuetify.+\.js$/,
+          loader: resolve('./ignoreStylus'),
+        }]
       }
     }
     if (isServer) {

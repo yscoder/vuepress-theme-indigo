@@ -36,8 +36,10 @@ export default {
 }
 
 .chip-tag {
-  .chip__content {
-    cursor: inherit;
+  &.chip {
+    .chip__content {
+      cursor: inherit;
+    }
   }
 }
 </style>

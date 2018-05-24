@@ -1,9 +1,0 @@
-*.log
-.temp
-vuepress
-TODOs.md
-art
-test
-docs
-.eslintrc.js
-yarn.lock

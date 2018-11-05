@@ -69,7 +69,7 @@ module.exports = {
       {
         text: 'Tags',
         icon: 'fa fa-tag',
-        url: '/tags'
+        url: '/tags/'
       },
       {
         text: 'Github',
@@ -86,7 +86,7 @@ module.exports = {
       {
         text: 'About',
         icon: 'fa fa-user-secret',
-        url: '/about'
+        url: '/about/'
       }
     ],
     socials: ['Weibo', 'QQ', 'Facebook', 'Twitter', 'GooglePlus'],

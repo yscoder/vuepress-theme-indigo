@@ -1,5 +1,5 @@
-const loaderUtils = require('loader-utils')
-const template = ''
+// const loaderUtils = require('loader-utils')
+// const template = ''
 
 module.exports = function (source) {
   // console.log(source)

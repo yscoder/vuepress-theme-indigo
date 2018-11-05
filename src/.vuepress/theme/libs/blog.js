@@ -2,7 +2,7 @@ import sortBy from 'lodash/sortBy'
 import dayjs from 'dayjs'
 
 const slugReg = /\/([^\/]+).html$/
-function matchSlug(path) {
+function matchSlug (path) {
   const arr = path.match(slugReg)
   return arr ? arr[1] : null
 }
@@ -37,10 +37,10 @@ const install = (Vue, { theme, pages }) => {
 
   Vue.mixin({
     computed: {
-      $blog() {
+      $blog () {
         return { postList, posts, tags, tagList }
       },
-      $postNav() {
+      $postNav () {
         const slug = matchSlug(this.$route.path)
         if (!slug) return
         const index = postList.indexOf(slug)
@@ -51,7 +51,7 @@ const install = (Vue, { theme, pages }) => {
           next: next ? posts[next] : null
         }
       },
-      $page() {
+      $page () {
         // override $page data
         const { path, meta } = this.$route
         for (let i = 0; i < pages.length; i++) {
@@ -61,6 +61,8 @@ const install = (Vue, { theme, pages }) => {
             return { ...page, path } // rewrite path
           }
         }
+
+        return { path: '', frontmatter: {} }
       }
     }
   })

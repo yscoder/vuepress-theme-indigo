@@ -61,6 +61,8 @@ const install = (Vue, { theme, pages }) => {
             return { ...page, path } // rewrite path
           }
         }
+
+        return { path: '', frontmatter: {} }
       }
     }
   })

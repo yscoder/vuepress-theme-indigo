@@ -39,7 +39,7 @@ module.exports = {
       module: {
         rules: [{
           test: /vuetify.+\.js$/,
-          loader: resolve('./ignoreStylus'),
+          loader: resolve('./ignoreStylus')
         }]
       }
     }

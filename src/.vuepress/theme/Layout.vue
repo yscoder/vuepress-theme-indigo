@@ -96,38 +96,6 @@ export default {
       this.navVisible = window.innerWidth > this.mobilePoint
     }
   },
-  mounted() {
-    // update title / meta tags
-    this.currentMetaTags = []
-    const updateMeta = () => {
-      document.title = this.createTitle()
-      document.documentElement.lang = this.$lang
-      const meta = [
-        {
-          name: 'description',
-          content: this.$description
-        },
-        ...(this.$page.frontmatter.meta || [])
-      ]
-      this.currentMetaTags = updateMetaTags(meta, this.currentMetaTags)
-    }
-    this.$watch('$page', updateMeta)
-    updateMeta()
-
-    this.$router.beforeEach((to, from, next) => {
-      if (to.path !== from.path && !Vue.component(pathToComponentName(to.path))) {
-        this.progressRunning = true
-      }
-      next()
-    })
-
-    this.$router.afterEach(() => {
-      this.progressRunning = false
-    })
-  },
-  beforeDestroy() {
-    updateMetaTags(null, this.currentMetaTags)
-  },
 }
 </script>
 <style src="@fortawesome/fontawesome-free-webfonts/css/fa-solid.css"></style>

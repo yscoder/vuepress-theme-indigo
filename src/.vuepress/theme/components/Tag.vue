@@ -5,7 +5,7 @@
                exact-active-class="tag-active">
     <v-chip label
             small
-            v-ripple
+            ripple
             class="capitalize chip-tag">
       <slot>{{slug}}</slot>
     </v-chip>

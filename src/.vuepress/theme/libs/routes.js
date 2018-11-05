@@ -4,7 +4,7 @@ const install = (Vue, { router, theme }) => {
   const { pagination, tags, categories } = theme
   const routes = []
 
-  if (pagination)
+  if (pagination) {
     routes.push({
       path: pagination.path,
       component: Layout,
@@ -12,8 +12,9 @@ const install = (Vue, { router, theme }) => {
         layout: 'home'
       }
     })
+  }
 
-  if (tags)
+  if (tags) {
     routes.push({
       path: tags.path,
       component: Layout,
@@ -21,8 +22,9 @@ const install = (Vue, { router, theme }) => {
         layout: 'tags'
       }
     })
+  }
 
-  if (categories)
+  if (categories) {
     routes.push({
       path: categories.path,
       component: Layout,
@@ -30,6 +32,7 @@ const install = (Vue, { router, theme }) => {
         layout: 'categories'
       }
     })
+  }
 
   router.addRoutes(routes)
 }

@@ -1,4 +1,4 @@
-export function pathToComponentName(path) {
+export function pathToComponentName (path) {
   if (path.charAt(path.length - 1) === '/') {
     return `page${path.replace(/\//g, '-') + 'index'}`
   } else {
@@ -6,7 +6,7 @@ export function pathToComponentName(path) {
   }
 }
 
-export function updateMetaTags(meta, current) {
+export function updateMetaTags (meta, current) {
   if (current) {
     current.forEach(c => {
       document.head.removeChild(c)
